@@ -1,0 +1,245 @@
+{
+  "common": {
+    "back": "Atrás",
+    "done": "Listo",
+    "tryAgain": "Intentar de nuevo",
+    "results": "Resultados",
+    "cancel": "Cancelar",
+    "preparingCamera": "Preparando cámara…"
+  },
+  "signalQuality": {
+    "no-signal": "sin señal",
+    "poor": "deficiente",
+    "fair": "aceptable",
+    "good": "buena"
+  },
+  "riskBadge": {
+    "normal": "Normal",
+    "low": "Marcado para seguimiento",
+    "warning": "Verificando",
+    "critical": "Emergencia"
+  },
+  "onboarding": {
+    "title": "Antes de comenzar",
+    "p1": "Verita Health es una ayuda de detección, no un dispositivo médico. No ha sido evaluada ni aprobada por la FDA ni por ningún otro organismo regulador. Utiliza la cámara y el acelerómetro de tu teléfono para estimar el pulso y detectar patrones de colapso — ambos son aproximaciones que pueden pasar por alto emergencias reales (falsos negativos) y pueden generar falsas alarmas (falsos positivos).",
+    "p2": "No reemplaza llamar a tu número de emergencias local, buscar atención médica ni un ECG clínico. Si en algún momento sientes que estás teniendo una emergencia médica, contacta a los servicios de emergencia de inmediato — no esperes a esta aplicación.",
+    "p3": "Para funcionar, Verita Health necesita: acceso a la cámara (para leer tu pulso mediante contacto con la yema del dedo), acceso al movimiento (para detectar un posible colapso) y acceso a la ubicación (para incluir tu ubicación si alguna vez alerta a tus contactos de emergencia). Puedes revocar cualquiera de estos permisos en cualquier momento desde la configuración de tu teléfono, lo cual simplemente desactivará la función correspondiente.",
+    "p4": "El monitoreo en segundo plano es limitado por diseño: tanto iOS como Android restringen lo que las aplicaciones de terceros pueden hacer cuando no están en primer plano. Considera el \"Chequeo Activo\" dentro de la app como tu herramienta confiable bajo demanda, y el monitoreo pasivo de colapso como una función de mejor esfuerzo en primer plano — no como una garantía permanente.",
+    "requestingPermissions": "Solicitando permisos…",
+    "continueButton": "Entiendo, continuar"
+  },
+  "home": {
+    "heading": "Verita Health",
+    "checkIn": {
+      "title": "Posible colapso detectado",
+      "body": "¿Estás bien? Si no sabemos de ti en {{seconds}}s, trataremos esto como una posible emergencia.",
+      "imOk": "Estoy bien"
+    },
+    "quickActions": {
+      "history": "Historial",
+      "nearbyHospitals": "Hospitales Cercanos",
+      "emergencyContacts": "Contactos de Emergencia",
+      "settings": "Configuración"
+    },
+    "heartAttackScreening": {
+      "title": "Detección de Ataque Cardíaco",
+      "subtitle": "Ritmo del pulso, monitoreo de colapso y palidez repentina"
+    },
+    "strokeScreening": {
+      "title": "Detección de Accidente Cerebrovascular (FAST)",
+      "subtitle": "Caída facial, debilidad en el brazo y habla arrastrada"
+    }
+  },
+  "heartAttack": {
+    "intro": "Detecta un posible paro cardíaco súbito y un posible ataque cardíaco — ritmo del pulso, un colapso repentino sin respuesta y palidez repentina.",
+    "lastPulseReading": {
+      "title": "Última lectura de pulso",
+      "empty": "Sin lectura reciente — realiza un Chequeo Activo",
+      "value": "{{bpm}} lpm · señal {{quality}}"
+    },
+    "runActiveCheck": {
+      "title": "Realizar Chequeo Activo",
+      "subtitle": "Cubre la cámara con la yema del dedo durante 20 segundos"
+    },
+    "pallorCheck": {
+      "title": "Prueba de Palidez",
+      "subtitle": "Detecta palidez repentina frente a tu valor de referencia guardado — una posible señal de ataque cardíaco"
+    },
+    "passiveMonitoring": {
+      "title": "Monitoreo pasivo de colapso",
+      "subtitle": "Solo en primer plano — vigila una caída repentina seguida de inmovilidad"
+    }
+  },
+  "stroke": {
+    "intro": "Cara, Brazo, Habla y Tiempo son las cuatro señales de alerta FAST de un accidente cerebrovascular — Cara, Brazo y Habla a continuación son pruebas basadas en sensores; Tiempo es un llamado a la acción, no algo que un sensor pueda detectar, así que es un cronómetro en su lugar.",
+    "faceCheck": {
+      "title": "Chequeo Facial",
+      "subtitle": "Busca caída facial usando la cámara frontal"
+    },
+    "fingerTap": {
+      "title": "Prueba de Toques con los Dedos",
+      "subtitle": "Detecta debilidad en un solo lado"
+    },
+    "speechCheck": {
+      "title": "Prueba de Habla",
+      "subtitle": "Lee una frase en voz alta para detectar habla arrastrada"
+    },
+    "timer": {
+      "title": "Tiempo",
+      "subtitle": "La cuarta señal FAST — no es una prueba con sensores, es un llamado a la acción",
+      "notStartedBody": "Si la caída facial, la debilidad en el brazo o el habla arrastrada comenzaron de repente, anota la hora ahora. Opciones de tratamiento como los medicamentos que disuelven coágulos tienen una ventana de tiempo limitada — recibir atención antes mantiene más opciones disponibles.",
+      "startButton": "Los síntomas comenzaron ahora",
+      "elapsedLabel": "Tiempo desde que comenzaron los síntomas",
+      "elapsedHint": "Dile a los servicios de emergencia o al personal del hospital esta hora exacta — afecta directamente tus opciones de tratamiento.",
+      "resetButton": "Reiniciar",
+      "resetConfirmTitle": "¿Reiniciar el cronómetro de síntomas?",
+      "resetConfirmBody": "Esto borra la hora de inicio registrada. Hazlo solo si se inició por error — no una vez que los síntomas reales estén resolviéndose, ya que el tiempo ya transcurrido sigue siendo importante para los servicios de emergencia."
+    }
+  },
+  "activeCheck": {
+    "noPermissionMessage": "Se requiere acceso a la cámara para leer tu pulso.",
+    "noCameraMessage": "Este dispositivo no tiene una cámara trasera utilizable para el Chequeo Activo.",
+    "instruction": "Cubre por completo el lente de la cámara y el flash con la yema del dedo",
+    "reading": "Leyendo…",
+    "resultNoPulse": "No se detectó pulso",
+    "resultBpm": "{{bpm}} lpm",
+    "signalQuality": "Calidad de la señal: {{quality}}",
+    "irregularityScore": "Puntaje de irregularidad del ritmo: {{score}}",
+    "irregularityFlagged": "(marcado — considera una evaluación médica)",
+    "irregularityNormal": "(dentro del rango esperado)",
+    "disclaimer": "Solo una estimación de detección — no un diagnóstico. Si te sientes mal, contacta a un profesional médico.",
+    "findNearbyCare": "Buscar atención cardíaca cercana"
+  },
+  "pallorCheck": {
+    "noPermissionMessage": "Se requiere acceso a la cámara para verificar el color de la piel.",
+    "noCameraMessage": "Este dispositivo no tiene una cámara frontal utilizable para la Prueba de Palidez.",
+    "detailLower": "Enrojecimiento vs. referencia: {{value}} puntos más bajo",
+    "detailHigher": "Enrojecimiento vs. referencia: {{value}} puntos más alto",
+    "disclaimer": "Solo una estimación de detección, basada únicamente en el color de la cámara — la iluminación, el balance de blancos de la cámara, el maquillaje y el bronceado pueden alterar esto tanto como la palidez real. Si esto ocurre junto con dolor en el pecho, dificultad para respirar, sudor frío o dolor en el brazo o la mandíbula, trátalo como un posible ataque cardíaco y llama a tu número de emergencias local ahora.",
+    "recaptureBaseline": "Volver a capturar referencia",
+    "instructionFirstTime": "Primera vez: esta captura se guardará como tu color de piel normal de referencia",
+    "instructionNormal": "Mira directamente a la cámara con iluminación uniforme y no te muevas"
+  },
+  "faceCheck": {
+    "noPermissionMessage": "Se requiere acceso a la cámara para verificar la simetría facial.",
+    "noCameraMessage": "Este dispositivo no tiene una cámara frontal utilizable para el Chequeo Facial.",
+    "instruction": "Mira directamente a la cámara y no te muevas",
+    "detail": "Asimetría de boca {{mouth}} · Asimetría de ojos {{eye}}",
+    "disclaimer": "Solo una estimación de detección, basada únicamente en puntos de referencia de la cámara. Si esto ocurre junto con debilidad repentina en el brazo o habla arrastrada, trátalo como un posible accidente cerebrovascular y llama a tu número de emergencias local ahora."
+  },
+  "fingerTap": {
+    "intro": {
+      "title": "Prueba de Toques con los Dedos",
+      "body": "Una prueba rápida de detección motora. Tocarás el botón en la pantalla tan rápido como puedas cómodamente durante 10 segundos con una mano, y luego con la otra. Una gran diferencia entre las manos puede ser una señal de debilidad en un solo lado — una de las señales de alerta FAST de un accidente cerebrovascular, junto con la caída facial y el habla arrastrada.",
+      "disclaimer": "Solo detección — no un diagnóstico. Si tienes caída facial repentina, debilidad en el brazo o habla arrastrada, llama a tu número de emergencias local de inmediato en lugar de realizar esta prueba primero.",
+      "startLeft": "Comenzar con la mano izquierda"
+    },
+    "changeHands": {
+      "title": "Cambiar de mano",
+      "body": "Ahora prepárate para tocar con tu mano derecha.",
+      "startRight": "Comenzar mano derecha"
+    },
+    "tapping": {
+      "handLabel": "Toca con tu mano {{hand}}",
+      "left": "izquierda",
+      "right": "derecha",
+      "tapButton": "TOCAR",
+      "tapCount": "{{count}} toques"
+    },
+    "results": {
+      "left": "Izquierda",
+      "right": "Derecha",
+      "tapsPerSecond": "{{rate}} toques/s",
+      "disclaimer": "Solo una estimación de detección, basada únicamente en la velocidad y el ritmo de los toques. Si esto ocurre junto con caída facial repentina o habla arrastrada, trátalo como un posible accidente cerebrovascular y llama a tu número de emergencias local ahora."
+    }
+  },
+  "speechCheck": {
+    "testPhrase": "Loro viejo no aprende a hablar",
+    "readAloud": "Lee esta frase en voz alta, con claridad y a tu ritmo normal:",
+    "introDisclaimer": "Solo detección — el ruido de fondo, los acentos o un micrófono deficiente pueden afectar esto tanto como una dificultad real del habla. Si tienes habla arrastrada repentina junto con caída facial o debilidad en el brazo, llama a tu número de emergencias local ahora en lugar de realizar esta prueba.",
+    "startListening": "Comenzar a escuchar",
+    "getReadyIn": "Prepárate… {{seconds}}",
+    "listening": "Escuchando…",
+    "noPermissionMessage": "Se requiere acceso al micrófono y al reconocimiento de voz para la Prueba de Habla.",
+    "somethingWrong": "Algo salió mal.",
+    "heard": "Se escuchó: \"{{transcript}}\"",
+    "wordMatchPace": "Coincidencia de palabras {{wordMatch}}% · Ritmo {{pace}}x lo esperado",
+    "resultsDisclaimer": "Solo una estimación de detección. Si esto ocurre junto con caída facial repentina o debilidad en el brazo, trátalo como un posible accidente cerebrovascular y llama a tu número de emergencias local ahora."
+  },
+  "history": {
+    "filters": {
+      "all": "Todos",
+      "heartAttack": "Ataque Cardíaco",
+      "stroke": "ACV"
+    },
+    "typeLabels": {
+      "active": "Chequeo Activo",
+      "face": "Chequeo Facial",
+      "arm": "Prueba de Toques con los Dedos",
+      "speech": "Prueba de Habla",
+      "pallor": "Prueba de Palidez"
+    },
+    "notEnoughSignal": "Señal insuficiente para calificar",
+    "noPulseDetected": "No se detectó pulso",
+    "bpmQualitySignal": "{{bpm}} · señal {{quality}}",
+    "irregularity": " · irregularidad {{score}}",
+    "flagged": " (marcado)",
+    "asymmetry": "Asimetría {{value}}%",
+    "wordMatchPace": "Coincidencia de palabras {{wordMatch}}% · ritmo {{pace}}x",
+    "savedAsBaseline": "Guardado como nueva referencia",
+    "rednessLower": "Enrojecimiento {{value}}pt más bajo vs. referencia",
+    "rednessHigher": "Enrojecimiento {{value}}pt más alto vs. referencia",
+    "empty": "Aún no hay chequeos. Los resultados del Chequeo Activo, la Prueba de Palidez, el Chequeo Facial, la Prueba de Toques con los Dedos y la Prueba de Habla aparecerán aquí después de realizarlos.",
+    "clearHistory": "Borrar historial",
+    "clearConfirmTitle": "¿Borrar historial?",
+    "clearConfirmBody": "Esto elimina todos los resultados de chequeos guardados en este dispositivo. Esta acción no se puede deshacer.",
+    "clear": "Borrar",
+    "disclaimer": "Almacenado solo en este dispositivo. Estas son estimaciones de detección, no diagnósticos — una tendencia aquí no sustituye una evaluación médica.",
+    "trendSummary": "Última {{latest}} · prom. {{avg}} · rango {{min}}–{{max}}",
+    "trendingUp": " · en aumento",
+    "trendingDown": " · en descenso"
+  },
+  "settings": {
+    "regionLabel": "Tu región (código de país de 2 letras)",
+    "regionPlaceholder": "p. ej. US, GB, IN",
+    "regionHint": "Número de emergencias local: {{number}}. Actualiza esto cuando viajes — un número incorrecto aquí hace que el botón \"Llamar ahora\" en una alerta de emergencia marque al servicio equivocado.",
+    "languageLabel": "Idioma"
+  },
+  "emergencyContacts": {
+    "heading": "Contactos de emergencia",
+    "hint": "Estas personas recibirán un mensaje de texto prellenado (con tu ubicación, si está disponible) si se detecta una posible emergencia y no respondes a tiempo. Tú siempre decides si el mensaje realmente se envía.",
+    "remove": "Eliminar",
+    "empty": "Aún no se han agregado contactos.",
+    "namePlaceholder": "Nombre",
+    "phonePlaceholder": "Número de teléfono",
+    "addContact": "Agregar contacto"
+  },
+  "emergencyAlert": {
+    "title": "Posible emergencia cardíaca",
+    "countdownBodyWithCount": "Si no cancelas, abriremos un mensaje de texto a tus {{count}} contacto(s) de emergencia con tu ubicación. Deberás presionar enviar — esta app nunca envía mensajes en silencio.",
+    "countdownBodyNoCount": "Si no cancelas, abriremos un mensaje de texto a tus contactos de emergencia guardados con tu ubicación. Deberás presionar enviar — esta app nunca envía mensajes en silencio.",
+    "sentBody": "Mensaje de alerta preparado para tus contactos de emergencia. Por favor, también llama al {{number}} si tú o alguien cerca necesita ayuda inmediata.",
+    "callNow": "Llamar al {{number}} ahora",
+    "cancelSafe": "Estoy a salvo — cancelar",
+    "backToHome": "Volver al inicio"
+  },
+  "nearbyHospitals": {
+    "emergencyTitle": "¿Tienes una emergencia en este momento?",
+    "emergencyBody": "Llama al {{number}} de inmediato — no pierdas tiempo eligiendo un hospital específico primero.",
+    "callNow": "Llamar al {{number}} ahora",
+    "locationLoading": "Obteniendo tu ubicación…",
+    "locationFound": "Las búsquedas de abajo están centradas en tu ubicación actual.",
+    "locationUnavailable": "Ubicación no disponible — las búsquedas se abrirán sin sesgo de ubicación. Es posible que la app de mapas de tu teléfono use su propia ubicación una vez abierta.",
+    "nearestER": {
+      "title": "Sala de Emergencias más cercana",
+      "subtitle": "Para cualquier emergencia activa — la opción más rápida, no específica para el corazón"
+    },
+    "nearestCardio": {
+      "title": "Centro Cardiovascular más cercano",
+      "subtitle": "Para dar seguimiento a una lectura marcada — no para una emergencia activa"
+    },
+    "disclaimer": "Abre la app de mapas de tu propio teléfono. Verita Health no verifica qué hospitales aparecen ni si actualmente cuentan con capacidad de emergencia cardíaca — llama antes si puedes.",
+    "couldNotOpenMapsTitle": "No se pudo abrir el mapa",
+    "couldNotOpenMapsBody": "No había ninguna app de mapas o navegador disponible para realizar esta búsqueda."
+  }
+}

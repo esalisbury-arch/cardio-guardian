@@ -1,0 +1,44 @@
+node_modules/
+*.log
+.DS_Store
+coverage/
+
+# Xcode / CocoaPods
+ios/build/
+ios/build*/
+ios/Pods/
+ios/*.xcworkspace
+ios/DerivedData/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.xcuserstate
+
+# Android / Gradle
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+android/app/release/
+*.keystore
+!debug.keystore
+
+# Bundler / CocoaPods
+vendor/bundle/
+
+# React Native
+*.jsbundle
+.watchmanconfig.bak
+ios/.xcode.env.local
+
+# Local, unmanaged Node.js toolchain (not part of the project; installed
+# locally because this machine has no system Node/Homebrew)
+.node-tooling/
+# Same story for the GitHub CLI (no Homebrew on this machine to install it)
+.gh-tooling/

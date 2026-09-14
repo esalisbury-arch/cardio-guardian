@@ -1,0 +1,19 @@
+<!--
+  Merge these keys into ios/<App>/Info.plist after running `react-native init`
+  / `pod install`. Wording matters for App Store review — be specific about
+  why each permission is needed and that it's optional/revocable.
+-->
+<key>NSCameraUsageDescription</key>
+<string>Verita Health reads your pulse and checks facial symmetry using the camera. No images are stored or transmitted.</string>
+
+<key>NSMotionUsageDescription</key>
+<string>Verita Health uses motion data to detect a possible collapse (sudden fall followed by no movement) while the app is open.</string>
+
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>If Verita Health ever detects a possible emergency, your last known location can be included in the alert sent to your emergency contacts.</string>
+
+<key>NSMicrophoneUsageDescription</key>
+<string>Verita Health uses the microphone during Speech Check to screen for slurred speech, a stroke warning sign. No audio is stored or transmitted.</string>
+
+<key>NSSpeechRecognitionUsageDescription</key>
+<string>Verita Health uses on-device speech recognition during Speech Check to compare what you say against a test phrase.</string>

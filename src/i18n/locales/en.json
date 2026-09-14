@@ -1,0 +1,245 @@
+{
+  "common": {
+    "back": "Back",
+    "done": "Done",
+    "tryAgain": "Try again",
+    "results": "Results",
+    "cancel": "Cancel",
+    "preparingCamera": "Preparing camera…"
+  },
+  "signalQuality": {
+    "no-signal": "no signal",
+    "poor": "poor",
+    "fair": "fair",
+    "good": "good"
+  },
+  "riskBadge": {
+    "normal": "Normal",
+    "low": "Flagged for follow-up",
+    "warning": "Checking in",
+    "critical": "Emergency"
+  },
+  "onboarding": {
+    "title": "Before you start",
+    "p1": "Verita Health is a screening aid, not a medical device. It has not been evaluated or cleared by the FDA or any other regulator. It uses your phone's camera and accelerometer to estimate pulse and detect collapse patterns — both are approximations that can miss real emergencies (false negatives) and can raise false alarms (false positives).",
+    "p2": "It does not replace calling your local emergency number, seeking medical care, or a clinical ECG. If you ever feel you are having a medical emergency, contact emergency services immediately — don't wait on this app.",
+    "p3": "To work, Verita Health needs: camera access (to read your pulse via fingertip contact), motion access (to detect a possible collapse), and location access (to include your location if it ever alerts your emergency contacts). You can revoke any of these at any time in your phone's settings, which will simply disable the related feature.",
+    "p4": "Background monitoring is limited by design: iOS and Android both restrict what third-party apps can do while not in the foreground. Treat the in-app \"Active Check\" as your reliable, on-demand tool, and passive collapse monitoring as a best-effort foreground feature — not an always-on guarantee.",
+    "requestingPermissions": "Requesting permissions…",
+    "continueButton": "I understand, continue"
+  },
+  "home": {
+    "heading": "Verita Health",
+    "checkIn": {
+      "title": "Possible collapse detected",
+      "body": "Are you OK? If we don't hear from you within {{seconds}}s, we'll treat this as a possible emergency.",
+      "imOk": "I'm OK"
+    },
+    "quickActions": {
+      "history": "History",
+      "nearbyHospitals": "Nearby Hospitals",
+      "emergencyContacts": "Emergency Contacts",
+      "settings": "Settings"
+    },
+    "heartAttackScreening": {
+      "title": "Heart Attack Screening",
+      "subtitle": "Pulse rhythm, collapse monitoring, and sudden pale/ashen skin"
+    },
+    "strokeScreening": {
+      "title": "Stroke Screening (FAST)",
+      "subtitle": "Face drooping, arm weakness, and slurred speech"
+    }
+  },
+  "heartAttack": {
+    "intro": "Screens for suspected sudden cardiac arrest and possible heart attack — pulse rhythm, a sudden collapse with no response, and sudden pale/ashen skin.",
+    "lastPulseReading": {
+      "title": "Last pulse reading",
+      "empty": "No recent reading — run an Active Check",
+      "value": "{{bpm}} bpm · {{quality}} signal"
+    },
+    "runActiveCheck": {
+      "title": "Run Active Check",
+      "subtitle": "Cover the camera with your fingertip for 20 seconds"
+    },
+    "pallorCheck": {
+      "title": "Pallor Check",
+      "subtitle": "Screen for sudden pale/ashen skin vs. your saved baseline — a possible heart attack sign"
+    },
+    "passiveMonitoring": {
+      "title": "Passive collapse monitoring",
+      "subtitle": "Foreground only — watches for a sudden fall + stillness"
+    }
+  },
+  "stroke": {
+    "intro": "Face, Arm, Speech, and Time are the four FAST warning signs of stroke — Face, Arm, and Speech below are sensor-based checks; Time is a call to action, not something a sensor can detect, so it's a timer instead.",
+    "faceCheck": {
+      "title": "Face Check",
+      "subtitle": "Look for facial drooping using the front camera"
+    },
+    "fingerTap": {
+      "title": "Finger Tap Test",
+      "subtitle": "Screen for one-sided weakness"
+    },
+    "speechCheck": {
+      "title": "Speech Check",
+      "subtitle": "Read a phrase aloud to screen for slurred speech"
+    },
+    "timer": {
+      "title": "Time",
+      "subtitle": "The fourth FAST sign — not a sensor check, a call to action",
+      "notStartedBody": "If face drooping, arm weakness, or slurred speech started suddenly, note the time now. Treatment options like clot-dissolving medication are time-windowed — getting care sooner keeps more of them open.",
+      "startButton": "Symptoms started now",
+      "elapsedLabel": "Time since symptoms started",
+      "elapsedHint": "Tell EMS or hospital staff this exact time — it directly affects your treatment options.",
+      "resetButton": "Reset",
+      "resetConfirmTitle": "Reset the symptom timer?",
+      "resetConfirmBody": "This clears the recorded start time. Only do this if it was started by mistake — not once real symptoms are resolving, since the time already elapsed still matters to EMS."
+    }
+  },
+  "activeCheck": {
+    "noPermissionMessage": "Camera access is required to read your pulse.",
+    "noCameraMessage": "This device doesn't have a usable rear camera for Active Check.",
+    "instruction": "Cover the camera lens and flash completely with your fingertip",
+    "reading": "Reading…",
+    "resultNoPulse": "No pulse detected",
+    "resultBpm": "{{bpm}} bpm",
+    "signalQuality": "Signal quality: {{quality}}",
+    "irregularityScore": "Rhythm irregularity score: {{score}}",
+    "irregularityFlagged": "(flagged — consider medical evaluation)",
+    "irregularityNormal": "(within expected range)",
+    "disclaimer": "Screening estimate only — not a diagnosis. If you feel unwell, contact a medical professional.",
+    "findNearbyCare": "Find nearby cardiac care"
+  },
+  "pallorCheck": {
+    "noPermissionMessage": "Camera access is required to check skin color.",
+    "noCameraMessage": "This device doesn't have a usable front camera for Pallor Check.",
+    "detailLower": "Redness vs. baseline: {{value}} points lower",
+    "detailHigher": "Redness vs. baseline: {{value}} points higher",
+    "disclaimer": "Screening estimate only, based on camera color alone — lighting, camera white balance, makeup, and tanning can all shift this as much as real pallor. If this comes with chest pain, shortness of breath, cold sweat, or pain in your arm or jaw, treat it as a possible heart attack and call your local emergency number now.",
+    "recaptureBaseline": "Recapture baseline",
+    "instructionFirstTime": "First time: this capture will be saved as your normal skin color baseline",
+    "instructionNormal": "Face the camera directly in even lighting and hold still"
+  },
+  "faceCheck": {
+    "noPermissionMessage": "Camera access is required to check facial symmetry.",
+    "noCameraMessage": "This device doesn't have a usable front camera for Face Check.",
+    "instruction": "Face the camera directly and hold still",
+    "detail": "Mouth asymmetry {{mouth}} · Eye asymmetry {{eye}}",
+    "disclaimer": "Screening estimate only, based on camera landmarks alone. If this comes with sudden arm weakness or slurred speech, treat it as a possible stroke and call your local emergency number now."
+  },
+  "fingerTap": {
+    "intro": {
+      "title": "Finger Tap Test",
+      "body": "A quick motor screening test. You'll tap the button on screen as fast as you comfortably can for 10 seconds with one hand, then again with the other. A large difference between hands can be a sign of one-sided weakness — one of the FAST warning signs of stroke, alongside face drooping and slurred speech.",
+      "disclaimer": "Screening only — not a diagnosis. If you have sudden face drooping, arm weakness, or slurred speech, call your local emergency number immediately rather than running this test first.",
+      "startLeft": "Start with left hand"
+    },
+    "changeHands": {
+      "title": "Change hands",
+      "body": "Now get ready to tap with your right hand.",
+      "startRight": "Start right hand"
+    },
+    "tapping": {
+      "handLabel": "Tap with your {{hand}} hand",
+      "left": "left",
+      "right": "right",
+      "tapButton": "TAP",
+      "tapCount": "{{count}} taps"
+    },
+    "results": {
+      "left": "Left",
+      "right": "Right",
+      "tapsPerSecond": "{{rate}} taps/s",
+      "disclaimer": "Screening estimate only, based on tapping rate and rhythm alone. If this comes with sudden face drooping or slurred speech, treat it as a possible stroke and call your local emergency number now."
+    }
+  },
+  "speechCheck": {
+    "testPhrase": "You can't teach an old dog new tricks",
+    "readAloud": "Read this phrase aloud, clearly and at your normal pace:",
+    "introDisclaimer": "Screening only — background noise, accents, or a poor microphone can affect this as much as actual speech difficulty. If you have sudden slurred speech along with face drooping or arm weakness, call your local emergency number now rather than running this test.",
+    "startListening": "Start listening",
+    "getReadyIn": "Get ready… {{seconds}}",
+    "listening": "Listening…",
+    "noPermissionMessage": "Microphone and speech recognition access are required for Speech Check.",
+    "somethingWrong": "Something went wrong.",
+    "heard": "Heard: \"{{transcript}}\"",
+    "wordMatchPace": "Word match {{wordMatch}}% · Pace {{pace}}x expected",
+    "resultsDisclaimer": "Screening estimate only. If this comes with sudden face drooping or arm weakness, treat it as a possible stroke and call your local emergency number now."
+  },
+  "history": {
+    "filters": {
+      "all": "All",
+      "heartAttack": "Heart Attack",
+      "stroke": "Stroke"
+    },
+    "typeLabels": {
+      "active": "Active Check",
+      "face": "Face Check",
+      "arm": "Finger Tap Test",
+      "speech": "Speech Check",
+      "pallor": "Pallor Check"
+    },
+    "notEnoughSignal": "Not enough signal to score",
+    "noPulseDetected": "No pulse detected",
+    "bpmQualitySignal": "{{bpm}} · {{quality}} signal",
+    "irregularity": " · irregularity {{score}}",
+    "flagged": " (flagged)",
+    "asymmetry": "Asymmetry {{value}}%",
+    "wordMatchPace": "Word match {{wordMatch}}% · pace {{pace}}x",
+    "savedAsBaseline": "Saved as new baseline",
+    "rednessLower": "Redness {{value}}pt lower vs. baseline",
+    "rednessHigher": "Redness {{value}}pt higher vs. baseline",
+    "empty": "No checks yet. Results from Active Check, Pallor Check, Face Check, the Finger Tap Test, and Speech Check will appear here after you run them.",
+    "clearHistory": "Clear history",
+    "clearConfirmTitle": "Clear history?",
+    "clearConfirmBody": "This removes all saved check results from this device. This can't be undone.",
+    "clear": "Clear",
+    "disclaimer": "Stored only on this device. These are screening estimates, not diagnoses — a trend here is not a substitute for medical evaluation.",
+    "trendSummary": "Latest {{latest}} · avg {{avg}} · range {{min}}–{{max}}",
+    "trendingUp": " · trending up",
+    "trendingDown": " · trending down"
+  },
+  "settings": {
+    "regionLabel": "Your region (2-letter country code)",
+    "regionPlaceholder": "e.g. US, GB, IN",
+    "regionHint": "Local emergency number: {{number}}. Update this when you travel — the wrong number here means the \"Call now\" button in an emergency alert dials the wrong service.",
+    "languageLabel": "Language"
+  },
+  "emergencyContacts": {
+    "heading": "Emergency contacts",
+    "hint": "These people get a pre-filled text (with your location, if available) if a possible emergency is detected and unresponsive check-in times out. You always control whether it actually sends.",
+    "remove": "Remove",
+    "empty": "No contacts added yet.",
+    "namePlaceholder": "Name",
+    "phonePlaceholder": "Phone number",
+    "addContact": "Add contact"
+  },
+  "emergencyAlert": {
+    "title": "Possible cardiac emergency",
+    "countdownBodyWithCount": "If you don't cancel, we'll open a text to your {{count}} emergency contact(s) with your location. You'll need to hit send — this app never sends messages silently.",
+    "countdownBodyNoCount": "If you don't cancel, we'll open a text to your saved emergency contacts with your location. You'll need to hit send — this app never sends messages silently.",
+    "sentBody": "Alert message prepared for your emergency contacts. Please also call {{number}} if you or someone nearby needs immediate help.",
+    "callNow": "Call {{number}} now",
+    "cancelSafe": "I'm safe — cancel",
+    "backToHome": "Back to home"
+  },
+  "nearbyHospitals": {
+    "emergencyTitle": "Having an emergency right now?",
+    "emergencyBody": "Call {{number}} immediately — don't spend time picking a specific hospital first.",
+    "callNow": "Call {{number}} now",
+    "locationLoading": "Getting your location…",
+    "locationFound": "Searches below are centered on your current location.",
+    "locationUnavailable": "Location unavailable — searches will open without a location bias. Your phone's maps app may still use its own location once opened.",
+    "nearestER": {
+      "title": "Nearest Emergency Room",
+      "subtitle": "For any active emergency — fastest option, not cardiac-specific"
+    },
+    "nearestCardio": {
+      "title": "Nearest Cardiovascular Center",
+      "subtitle": "For following up on a flagged reading — not for an active emergency"
+    },
+    "disclaimer": "Opens your phone's own maps app. Verita Health doesn't verify which hospitals appear or whether they currently have emergency cardiac capacity — call ahead if you can.",
+    "couldNotOpenMapsTitle": "Couldn't open maps",
+    "couldNotOpenMapsBody": "No maps app or browser was available to run this search."
+  }
+}
