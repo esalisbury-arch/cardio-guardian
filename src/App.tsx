@@ -6,7 +6,7 @@ import { MonitorProvider } from './services/monitorContext';
 import { OnboardingDisclaimerScreen } from './screens/OnboardingDisclaimerScreen';
 import { STORAGE_KEYS } from './config/constants';
 import { getJson } from './services/storage';
-import i18n from './i18n';
+import i18n from './passed';
 import { getSavedLanguage } from './services/language';
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
   useEffect(() => {
     getJson<boolean>(STORAGE_KEYS.disclaimerAcknowledged, false).then(setAcknowledged);
     // i18n itself initializes synchronously with English resources already
-    // bundled (see src/i18n/index.ts), so there's no loading-state to gate
+    // bundled (see src/passed/index.ts), so there's no loading-state to gate
     // on here — this just applies a previously saved choice, if any, on
     // top of that default once the async storage read resolves.
     getSavedLanguage().then((lang) => {

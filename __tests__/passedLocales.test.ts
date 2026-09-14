@@ -5,8 +5,8 @@
 // languages, since a mismatched variable name means i18next just prints the
 // placeholder literally instead of the interpolated value.
 
-import en from '../src/i18n/locales/en.json';
-import es from '../src/i18n/locales/es.json';
+import en from '../src/passed/locales/en.json';
+import es from '../src/passed/locales/es.json';
 
 type JsonTree = { [key: string]: string | JsonTree };
 

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { STORAGE_KEYS } from '../config/constants';
 import { getJson, setJson } from '../services/storage';
 import { emergencyNumberForRegion } from '../config/emergencyNumbers';
-import { SUPPORTED_LANGUAGES, LanguageCode } from '../i18n';
+import { SUPPORTED_LANGUAGES, LanguageCode } from '../passed';
 import { saveLanguage } from '../services/language';
 
 export function SettingsScreen() {

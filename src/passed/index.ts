@@ -7,7 +7,7 @@
 //
 // SCOPE NOTE: this covers all static UI chrome — every screen's titles,
 // buttons, instructions, and disclaimers, plus the Speech Check test phrase
-// itself (src/i18n/locales/*.json: speechCheck.testPhrase). It does NOT
+// itself (src/passed/locales/*.json: speechCheck.testPhrase). It does NOT
 // (yet) cover the dynamic "reasons" sentences returned by the pure-logic
 // signal modules (src/signal/*.ts) — those stay English-only for now. Those
 // modules are deliberately RN-free, framework-agnostic TypeScript (see

@@ -162,7 +162,7 @@ not wired into the default build.
 
 ## Multi-language support
 
-English and Spanish today (`src/i18n/locales/en.json`, `es.json`), switched
+English and Spanish today (`src/passed/locales/en.json`, `es.json`), switched
 in Settings and persisted locally (`src/services/language.ts`). Built on
 `i18next`/`react-i18next` — deliberately **pure JS, no native module** like
 `react-native-localize` for device-locale auto-detection: this project's
@@ -186,7 +186,7 @@ deliberately RN-free, framework-agnostic TypeScript (see "Project layout"
 below); threading translation keys through their return types and existing
 unit tests is a larger, separate change than this one covers.
 
-`__tests__/i18nLocales.test.ts` guards against locale drift: every language
+`__tests__/passedLocales.test.ts` guards against locale drift: every language
 must define the exact same set of keys with the exact same `{{variable}}`
 interpolation placeholders, so a translation can't silently fall back to a
 raw key or drop a value.
@@ -204,9 +204,9 @@ src/
                         speech capture + accelerometer + permissions bridges to RN/native
   services/             emergency contacts storage, check history storage,
                         skin-tone baseline storage, language storage, alert/countdown, location, MonitorProvider
-  i18n/                 i18next setup + locales/en.json, locales/es.json
+  passed/                i18next setup + locales/en.json, locales/es.json
   screens/, navigation/, components/   UI
-__tests__/              Jest tests for src/signal/* and src/i18n/locales/*
+__tests__/              Jest tests for src/signal/* and src/passed/locales/*
 ios/, android/          generated native projects (checked in, see "Native projects" below)
 android_native_reference/  Kotlin frame-processor plugins (PPG, face landmarks, face color),
                             optional silent-SMS module, AndroidManifest permission snippet
@@ -382,7 +382,7 @@ accelerometer scenarios, symmetric/asymmetric tap patterns,
 symmetric/drooping synthetic face landmarks, exact/garbled/slow synthetic
 transcripts, every triage branch, trend summaries over
 empty/single/multi-point series, and pale/normal synthetic skin-color
-samples against a synthetic baseline), plus `src/i18n/locales/en.json` and
+samples against a synthetic baseline), plus `src/passed/locales/en.json` and
 `es.json` for key parity and matching `{{variable}}` interpolation names
 across languages. The PPG and collapse math
 were also independently sanity-checked against a parallel Python port during

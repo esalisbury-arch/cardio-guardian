@@ -26,7 +26,7 @@ import { SpeechAttempt, SpeechScreeningResult } from '../types';
 const WORD_ERROR_RATE_FLAG_THRESHOLD = 0.4;
 const RATE_SLOWDOWN_FLAG_THRESHOLD = 1.6; // 60% longer than expected pace
 // Typical conversational reading pace — calibrated for English. Now that
-// src/i18n/locales/* supplies a test phrase per language (see
+// src/passed/locales/* supplies a test phrase per language (see
 // speechCheck.testPhrase), this WPM figure is still a single English-derived
 // constant applied to every language's expected duration, since normal
 // speaking pace genuinely varies by language. Not yet verified per-language
