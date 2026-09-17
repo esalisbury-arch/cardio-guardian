@@ -9,10 +9,12 @@ export const PALLOR_CHECK_DURATION_MS = 5_000; // front-camera skin-color burst
 // sentence, and other languages' phrases being idiomatic equivalents that
 // have NOT been independently verified against a clinical scale in that
 // language.
-export const SPEECH_CHECK_MAX_DURATION_MS = 30_000; // safety cutoff if recognition never ends
+// 5s was tried and measured too tight: live device logs showed the phrase
+// itself takes close to 5s to say, so recognition was hitting this ceiling
+// right as (or just before) the speaker finished — cutting the last word or
+// two on a normal-paced read. 8s gives reliable margin.
+export const SPEECH_CHECK_MAX_DURATION_MS = 8_000; // safety cutoff if recognition never ends
 export const SPEECH_CHECK_GET_READY_MS = 3_000; // pause before listening starts, so it doesn't eat into speaking time
-export const CHECK_IN_PROMPT_TIMEOUT_MS = 30_000; // "are you OK?" response window after a collapse
-export const EMERGENCY_ALERT_COUNTDOWN_MS = 30_000; // final countdown before contacts are notified
 export const IRREGULARITY_FOLLOWUP_COOLDOWN_MS = 6 * 60 * 60 * 1000; // avoid nagging repeatedly in one sitting
 
 // Cap on-device check history so AsyncStorage doesn't grow unbounded on a
