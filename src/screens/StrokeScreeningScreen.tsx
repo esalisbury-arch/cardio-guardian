@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../navigation/types';
 import { clearSymptomOnset, getSymptomOnset, setSymptomOnsetNow } from '../services/symptomTimer';
+import { ActionCard } from '../components/ActionCard';
+import { ScreenContainer } from '../components/ScreenContainer';
+import { colors, radii, spacing, typography } from '../theme';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'StrokeScreening'>;
 
@@ -56,7 +59,7 @@ export function StrokeScreeningScreen({ navigation }: Props) {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScreenContainer>
       <Text style={styles.intro}>{t('stroke.intro')}</Text>
 
       {onset === null ? (
@@ -80,42 +83,69 @@ export function StrokeScreeningScreen({ navigation }: Props) {
         </View>
       )}
 
-      <TouchableOpacity style={styles.secondaryButton} onPress={() => navigation.navigate('FaceCheck')}>
-        <Text style={styles.secondaryButtonText}>{t('stroke.faceCheck.title')}</Text>
-        <Text style={styles.secondaryButtonSubtext}>{t('stroke.faceCheck.subtitle')}</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.secondaryButton} onPress={() => navigation.navigate('StrokeCheck')}>
-        <Text style={styles.secondaryButtonText}>{t('stroke.fingerTap.title')}</Text>
-        <Text style={styles.secondaryButtonSubtext}>{t('stroke.fingerTap.subtitle')}</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.secondaryButton} onPress={() => navigation.navigate('SpeechCheck')}>
-        <Text style={styles.secondaryButtonText}>{t('stroke.speechCheck.title')}</Text>
-        <Text style={styles.secondaryButtonSubtext}>{t('stroke.speechCheck.subtitle')}</Text>
-      </TouchableOpacity>
-    </ScrollView>
+      <ActionCard
+        icon="🙂"
+        title={t('stroke.faceCheck.title')}
+        subtitle={t('stroke.faceCheck.subtitle')}
+        onPress={() => navigation.navigate('FaceCheck')}
+      />
+      <ActionCard
+        icon="👆"
+        title={t('stroke.fingerTap.title')}
+        subtitle={t('stroke.fingerTap.subtitle')}
+        onPress={() => navigation.navigate('StrokeCheck')}
+      />
+      <ActionCard
+        icon="🗣️"
+        title={t('stroke.speechCheck.title')}
+        subtitle={t('stroke.speechCheck.subtitle')}
+        onPress={() => navigation.navigate('SpeechCheck')}
+      />
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#111' },
-  content: { padding: 24, paddingBottom: 48, gap: 18 },
-  intro: { color: '#999', fontSize: 13, lineHeight: 19 },
-  secondaryButton: { backgroundColor: '#1c1c1c', borderRadius: 14, padding: 20, borderWidth: 1, borderColor: '#333' },
-  secondaryButtonText: { color: '#fff', fontSize: 18, fontWeight: '800' },
-  secondaryButtonSubtext: { color: '#999', fontSize: 13, marginTop: 4 },
-  timerCard: { backgroundColor: '#1c1c1c', borderRadius: 14, padding: 20, borderWidth: 1, borderColor: '#333', gap: 10 },
-  timerTitle: { color: '#fff', fontSize: 18, fontWeight: '800' },
-  timerSubtitle: { color: '#7fa8ff', fontSize: 13, fontWeight: '600' },
+  intro: { ...typography.intro, color: colors.textSecondary },
+  timerCard: {
+    backgroundColor: colors.surface,
+    borderRadius: radii.lg,
+    padding: spacing.xl - 4,
+    borderWidth: 1,
+    borderColor: colors.surfaceBorder,
+    gap: spacing.sm,
+  },
+  timerTitle: { color: colors.textPrimary, fontSize: 18, fontWeight: '800' },
+  timerSubtitle: { color: colors.primaryMuted, fontSize: 13, fontWeight: '600' },
   timerBody: { color: '#ccc', fontSize: 14, lineHeight: 20 },
-  timerStartButton: { backgroundColor: '#2f6fed', paddingVertical: 14, borderRadius: 12, alignItems: 'center', marginTop: 4 },
-  timerStartButtonText: { color: '#fff', fontWeight: '700', fontSize: 15 },
-  timerCardActive: { backgroundColor: '#3a1414', borderRadius: 14, padding: 20, gap: 6, alignItems: 'center' },
-  timerTitleActive: { color: '#ffd6d6', fontSize: 18, fontWeight: '800', alignSelf: 'flex-start' },
-  timerElapsedLabel: { color: '#ffb3b3', fontSize: 13, fontWeight: '600', marginTop: 4 },
-  timerElapsed: { color: '#fff', fontSize: 44, fontWeight: '900', letterSpacing: 1 },
-  timerHint: { color: '#ffe3e3', fontSize: 13, lineHeight: 19, textAlign: 'center', marginTop: 4 },
-  timerResetButton: { borderColor: '#fff', borderWidth: 1.5, paddingVertical: 12, paddingHorizontal: 28, borderRadius: 12, marginTop: 10, alignSelf: 'stretch', alignItems: 'center' },
-  timerResetButtonText: { color: '#fff', fontWeight: '700', fontSize: 14 },
+  timerStartButton: {
+    backgroundColor: colors.primary,
+    paddingVertical: 14,
+    borderRadius: radii.md,
+    alignItems: 'center',
+    marginTop: spacing.xs,
+  },
+  timerStartButtonText: { color: colors.textOnPrimary, fontWeight: '700', fontSize: 15 },
+  timerCardActive: {
+    backgroundColor: colors.dangerSurface,
+    borderRadius: radii.lg,
+    padding: spacing.xl - 4,
+    gap: 6,
+    alignItems: 'center',
+  },
+  timerTitleActive: { color: colors.dangerText, fontSize: 18, fontWeight: '800', alignSelf: 'flex-start' },
+  timerElapsedLabel: { color: '#ffb3b3', fontSize: 13, fontWeight: '600', marginTop: spacing.xs },
+  timerElapsed: { color: colors.textPrimary, fontSize: 44, fontWeight: '900', letterSpacing: 1 },
+  timerHint: { color: colors.dangerTextSoft, fontSize: 13, lineHeight: 19, textAlign: 'center', marginTop: spacing.xs },
+  timerResetButton: {
+    borderColor: colors.textPrimary,
+    borderWidth: 1.5,
+    paddingVertical: 12,
+    paddingHorizontal: 28,
+    borderRadius: radii.md,
+    marginTop: spacing.sm,
+    alignSelf: 'stretch',
+    alignItems: 'center',
+  },
+  timerResetButtonText: { color: colors.textPrimary, fontWeight: '700', fontSize: 14 },
 });

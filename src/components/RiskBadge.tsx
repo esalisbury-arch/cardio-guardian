@@ -2,12 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { RiskLevel } from '../types';
+import { colors, radii } from '../theme';
 
 const COLORS: Record<RiskLevel, { bg: string; fg: string; labelKey: string }> = {
-  NORMAL: { bg: '#1f6f43', fg: '#eafff2', labelKey: 'riskBadge.normal' },
-  LOW: { bg: '#8a6d1a', fg: '#fff8e6', labelKey: 'riskBadge.low' },
-  WARNING: { bg: '#a35a12', fg: '#fff3e6', labelKey: 'riskBadge.warning' },
-  CRITICAL: { bg: '#a11d1d', fg: '#ffecec', labelKey: 'riskBadge.critical' },
+  NORMAL: { bg: colors.normal, fg: colors.normalText, labelKey: 'riskBadge.normal' },
+  LOW: { bg: colors.low, fg: colors.lowText, labelKey: 'riskBadge.low' },
 };
 
 export function RiskBadge({ level }: { level: RiskLevel }) {
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
   badge: {
     paddingVertical: 10,
     paddingHorizontal: 18,
-    borderRadius: 999,
+    borderRadius: radii.pill,
     alignSelf: 'flex-start',
   },
   text: {

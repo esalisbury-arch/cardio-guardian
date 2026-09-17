@@ -1,13 +1,15 @@
 import React, { useCallback, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
 import { RiskBadge } from '../components/RiskBadge';
 import { TrendSparkline } from '../components/TrendSparkline';
+import { ScreenContainer } from '../components/ScreenContainer';
 import { clearHistory, listHistory } from '../services/history';
 import { summarizeTrend, TrendPoint } from '../signal/historyTrends';
 import { CheckType, HistoryEntry } from '../types';
+import { colors, radii, spacing } from '../theme';
 
 // Mirrors the app's two screening categories (see HomeDashboardScreen,
 // HeartAttackScreeningScreen, StrokeScreeningScreen) instead of listing
@@ -153,7 +155,7 @@ export function HistoryScreen() {
           .map((c) => ({ ...c, summary: summarizeTrend(c.series) }));
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScreenContainer contentStyle={styles.content}>
       <View style={styles.filterRow}>
         {getFilters(t).map((f) => (
           <TouchableOpacity
@@ -208,28 +210,41 @@ export function HistoryScreen() {
       )}
 
       <Text style={styles.disclaimer}>{t('history.disclaimer')}</Text>
-    </ScrollView>
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#111' },
-  content: { padding: 24, paddingBottom: 48, gap: 14 },
-  filterRow: { flexDirection: 'row', gap: 8 },
-  chip: { paddingVertical: 8, paddingHorizontal: 14, borderRadius: 999, backgroundColor: '#1c1c1c', borderWidth: 1, borderColor: '#333' },
-  chipActive: { backgroundColor: '#2f6fed', borderColor: '#2f6fed' },
+  content: { gap: spacing.md + 2 },
+  filterRow: { flexDirection: 'row', gap: spacing.sm },
+  chip: {
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    borderRadius: radii.pill,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.surfaceBorder,
+  },
+  chipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
   chipText: { color: '#ccc', fontSize: 13, fontWeight: '600' },
-  chipTextActive: { color: '#fff' },
-  card: { backgroundColor: '#1c1c1c', borderRadius: 14, padding: 18, gap: 12 },
-  trendCardTitle: { color: '#fff', fontSize: 14, fontWeight: '700' },
-  trendSummary: { color: '#999', fontSize: 13 },
-  empty: { color: '#999', fontSize: 14, lineHeight: 20, textAlign: 'center', marginTop: 24 },
-  row: { backgroundColor: '#1c1c1c', borderRadius: 14, padding: 16, gap: 4 },
+  chipTextActive: { color: colors.textPrimary },
+  card: { backgroundColor: colors.surface, borderRadius: radii.lg, padding: spacing.xl - 6, gap: spacing.md },
+  trendCardTitle: { color: colors.textPrimary, fontSize: 14, fontWeight: '700' },
+  trendSummary: { color: colors.textSecondary, fontSize: 13 },
+  empty: { color: colors.textSecondary, fontSize: 14, lineHeight: 20, textAlign: 'center', marginTop: spacing.xl },
+  row: { backgroundColor: colors.surface, borderRadius: radii.lg, padding: 16, gap: spacing.xs },
   rowHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  rowType: { color: '#fff', fontSize: 15, fontWeight: '700' },
+  rowType: { color: colors.textPrimary, fontSize: 15, fontWeight: '700' },
   rowDetail: { color: '#ccc', fontSize: 14 },
-  rowTime: { color: '#888', fontSize: 12, marginTop: 2 },
-  clearButton: { borderColor: '#a11d1d', borderWidth: 1, paddingVertical: 14, borderRadius: 12, alignItems: 'center', marginTop: 8 },
-  clearButtonText: { color: '#ff6b6b', fontWeight: '700', fontSize: 15 },
-  disclaimer: { color: '#666', fontSize: 12, textAlign: 'center', lineHeight: 17, marginTop: 4 },
+  rowTime: { color: colors.textTertiary, fontSize: 12, marginTop: 2 },
+  clearButton: {
+    borderColor: colors.danger,
+    borderWidth: 1,
+    paddingVertical: 14,
+    borderRadius: radii.md,
+    alignItems: 'center',
+    marginTop: spacing.sm,
+  },
+  clearButtonText: { color: colors.dangerAccent, fontWeight: '700', fontSize: 15 },
+  disclaimer: { color: colors.textMuted, fontSize: 12, textAlign: 'center', lineHeight: 17, marginTop: spacing.xs },
 });

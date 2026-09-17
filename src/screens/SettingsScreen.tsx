@@ -6,6 +6,8 @@ import { getJson, setJson } from '../services/storage';
 import { emergencyNumberForRegion } from '../config/emergencyNumbers';
 import { SUPPORTED_LANGUAGES, LanguageCode } from '../passed';
 import { saveLanguage } from '../services/language';
+import { ScreenContainer } from '../components/ScreenContainer';
+import { colors, radii, spacing } from '../theme';
 
 export function SettingsScreen() {
   const { t, i18n } = useTranslation();
@@ -27,14 +29,14 @@ export function SettingsScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer scroll={false} contentStyle={styles.content}>
       <Text style={styles.label}>{t('settings.regionLabel')}</Text>
       <TextInput
         style={styles.input}
         value={region}
         onChangeText={handleChange}
         placeholder={t('settings.regionPlaceholder')}
-        placeholderTextColor="#666"
+        placeholderTextColor={colors.textMuted}
         autoCapitalize="characters"
         maxLength={2}
       />
@@ -54,26 +56,26 @@ export function SettingsScreen() {
           </TouchableOpacity>
         ))}
       </View>
-    </View>
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#111', padding: 24, paddingTop: 64, gap: 12 },
-  label: { color: '#fff', fontSize: 15, fontWeight: '700' },
-  input: { backgroundColor: '#1c1c1c', color: '#fff', fontSize: 18, padding: 14, borderRadius: 10 },
-  hint: { color: '#999', fontSize: 13, lineHeight: 19 },
-  languageLabel: { marginTop: 16 },
+  content: { gap: spacing.md },
+  label: { color: colors.textPrimary, fontSize: 15, fontWeight: '700' },
+  input: { backgroundColor: colors.surface, color: colors.textPrimary, fontSize: 18, padding: 14, borderRadius: radii.sm },
+  hint: { color: colors.textSecondary, fontSize: 13, lineHeight: 19 },
+  languageLabel: { marginTop: spacing.lg - 2 },
   languageRow: { flexDirection: 'row', gap: 10 },
   languageChip: {
     paddingVertical: 10,
     paddingHorizontal: 18,
-    borderRadius: 999,
-    backgroundColor: '#1c1c1c',
+    borderRadius: radii.pill,
+    backgroundColor: colors.surface,
     borderWidth: 1,
-    borderColor: '#333',
+    borderColor: colors.surfaceBorder,
   },
-  languageChipActive: { backgroundColor: '#2f6fed', borderColor: '#2f6fed' },
+  languageChipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
   languageChipText: { color: '#ccc', fontSize: 14, fontWeight: '600' },
-  languageChipTextActive: { color: '#fff' },
+  languageChipTextActive: { color: colors.textPrimary },
 });
