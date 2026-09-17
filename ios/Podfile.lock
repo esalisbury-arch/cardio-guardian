@@ -1236,8 +1236,6 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSensors (7.3.6):
-    - React-Core
   - SocketRocket (0.7.0)
   - VisionCamera (4.7.3):
     - VisionCamera/Core (= 4.7.3)
@@ -1316,7 +1314,6 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - RNSensors (from `../node_modules/react-native-sensors`)
   - VisionCamera (from `../node_modules/react-native-vision-camera`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -1446,8 +1443,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-permissions"
   RNScreens:
     :path: "../node_modules/react-native-screens"
-  RNSensors:
-    :path: "../node_modules/react-native-sensors"
   VisionCamera:
     :path: "../node_modules/react-native-vision-camera"
   Yoga:
@@ -1512,13 +1507,12 @@ SPEC CHECKSUMS:
   React-utils: f242eb7e7889419d979ca0e1c02ccc0ea6e43b29
   ReactCommon: f7da14a8827b72704169a48c929bcde802698361
   RNCAsyncStorage: ec53e44dc3e75b44aa2a9f37618a49c3bc080a7a
-  RNPermissions: fb40f041d792b5b29541900020d148876fdc0629
+  RNPermissions: 5a6715672234d8bde174bff9b5070ee70e24e5cc
   RNScreens: 177a3fedd12fc8d12af3c23f17e7bbdc9749a2cd
-  RNSensors: 117ba71c7eeeea0407ea0c0bb79e3495d602049b
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   VisionCamera: 47f10351a1b6a8d251b90986ae72ca5f52331954
   Yoga: 2246eea72aaf1b816a68a35e6e4b74563653ae09
 
-PODFILE CHECKSUM: c63feb14512b2872c812a78858023f33404cc912
+PODFILE CHECKSUM: 578cef8c165e6b084d9b727d068412ca4c344859
 
 COCOAPODS: 1.14.3

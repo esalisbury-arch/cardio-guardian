@@ -1,21 +1,18 @@
 # Verita Health
 
 A React Native app that uses sensors already on a phone (front/rear camera +
-flash, microphone, accelerometer, touchscreen) to screen for three narrow,
-specific patterns: **suspected sudden cardiac arrest** (collapse + no
-detectable pulse + no response to a check-in prompt), **possible
-stroke** via all four FAST warning signs — **F**ace drooping
-(facial-landmark symmetry via the front camera), **A**rm weakness (a finger
-tapping test), **S**peech difficulty (on-device speech recognition against a
-test phrase), and **T**ime (a manually-started onset stopwatch, since Time
-is a call to action rather than something a sensor can detect) — and
-**possible heart attack** via sudden facial
-pallor (skin color compared against a saved personal baseline, since skin
-tone itself varies too much across people for any absolute "pale"
-threshold to mean anything). It is a screening aid to help someone get help
-faster, not a diagnostic or FDA-cleared medical device. See [Medical &
-safety disclaimer](#medical--safety-disclaimer) before using or
-distributing it.
+flash, microphone, touchscreen) to screen for two narrow, specific patterns:
+**possible heart attack** via pulse rhythm and sudden facial pallor (skin
+color compared against a saved personal baseline, since skin tone itself
+varies too much across people for any absolute "pale" threshold to mean
+anything), and **possible stroke** via all four FAST warning signs — **F**ace
+drooping (facial-landmark symmetry via the front camera), **A**rm weakness (a
+finger tapping test), **S**peech difficulty (on-device speech recognition
+against a test phrase), and **T**ime (a manually-started onset stopwatch,
+since Time is a call to action rather than something a sensor can detect). It
+is a screening aid to help someone get help faster, not a diagnostic or
+FDA-cleared medical device. See [Medical & safety
+disclaimer](#medical--safety-disclaimer) before using or distributing it.
 
 ## What it actually does
 
@@ -24,34 +21,26 @@ distributing it.
   turns the resulting red-channel intensity stream into a BPM estimate and
   beat-to-beat intervals; `src/signal/hrvAnalysis.ts` flags markedly
   irregular beat spacing for follow-up (not a diagnosis — see limitations).
-- **Passive collapse monitoring** (toggle on the home screen): while the app
-  is in the foreground, `src/sensors/motion.ts` streams accelerometer data
-  into `src/signal/collapseDetector.ts`, which looks for a sharp impact
-  followed by ~8s of near-zero motion.
-- **Triage fusion** (`src/signal/triageEngine.ts`): combines collapse status,
-  last known pulse status, and response to an on-screen "are you OK?"
-  prompt. **CRITICAL — the only level that opens the emergency flow —
-  requires all three: collapse detected, no evidence of a pulse, and no
-  response within the timeout.** Any one or two signals alone produce a
-  lower, non-emergency level. This is intentionally conservative to avoid
-  auto-alerting on a single ambiguous signal.
-- **Emergency alert flow** (`src/screens/EmergencyAlertScreen.tsx`,
-  `src/services/alertService.ts`): a cancellable 30s countdown, after which
-  the native SMS composer opens pre-filled with an alert + Google Maps
-  location link to your saved emergency contacts, and a one-tap "call local
-  emergency number" button (looked up from `src/config/emergencyNumbers.ts`
-  by the region you set in Settings — override this, especially when
-  traveling).
+- **Triage** (`src/signal/triageEngine.ts`): flags a reliably irregular pulse
+  rhythm from Active Check as "flag for follow-up" — never anything higher.
+  This app has no automatic alerting of any kind; every check only ever
+  produces a screening result on-screen, with a reminder to call emergency
+  services yourself if warning signs are present. (An earlier version fused
+  in passive accelerometer-based collapse detection and an on-screen "are
+  you OK?" prompt to reach a CRITICAL level that auto-triggered a
+  cancellable emergency-alert countdown; that whole path — passive collapse
+  monitoring — was removed as unreliable in practice, see git history if you
+  need it.)
 - **Finger Tap Test** (`src/screens/StrokeCheckScreen.tsx`,
   `src/signal/fingerTapAnalysis.ts`): a 10-second tap-as-fast-as-you-can test
   per hand. Compares tap rate and rhythm between hands — a large asymmetry
   can indicate one-sided weakness (the "Arm weakness" in FAST: Face
   drooping, Arm weakness, Speech difficulty, Time to call emergency
-  services). Deliberately never auto-triggers the emergency alert flow on
-  its own — a single tapping-asymmetry reading is too weak and too easily
-  confounded (handedness, fatigue, prior injury) to justify that; it only
-  ever produces a "flag for follow-up" result with an explicit reminder to
-  call emergency services if it comes with facial or speech symptoms.
+  services). Only ever produces a "flag for follow-up" result — a single
+  tapping-asymmetry reading is too weak and too easily confounded
+  (handedness, fatigue, prior injury) to mean more than that — with an
+  explicit reminder to call emergency services if it comes with facial or
+  speech symptoms.
 - **Face Check** (`src/screens/FaceCheckScreen.tsx`,
   `src/signal/faceSymmetryAnalysis.ts`): a 4-second front-camera burst.
   `src/sensors/faceLandmarkCamera.ts` bridges to a native facial-landmark
@@ -60,9 +49,9 @@ distributing it.
   left vs right, normalized by interocular distance so face size/distance
   from the camera doesn't matter. Median-aggregated across the whole burst
   so a single blink or head turn can't produce a false flag. Same design
-  stance as the Finger Tap Test: a "flag for follow-up" result only, never
-  an auto-triggered emergency alert, with an explicit reminder to call
-  emergency services if it comes with arm weakness or slurred speech.
+  stance as the Finger Tap Test: a "flag for follow-up" result only, with an
+  explicit reminder to call emergency services if it comes with arm weakness
+  or slurred speech.
 - **Speech Check** (`src/screens/SpeechCheckScreen.tsx`,
   `src/signal/speechAnalysis.ts`): the user reads a fixed test sentence
   aloud — the Cincinnati Prehospital Stroke Scale's own phrase, "You can't
@@ -144,22 +133,6 @@ distributing it.
   and Active Check's results screen links here directly when an irregularity
   gets flagged. Reachable anytime from the Home dashboard's link row too.
 
-## Why it never sends anything silently by default
-
-Apple does not allow third-party apps to send SMS without the user tapping
-send in the native composer; there is no way around this on iOS. Rather than
-build an inconsistent "silent on Android, tap-required on iOS" experience —
-and because a false-positive CRITICAL silently texting or calling people on
-someone's behalf is a worse failure mode than asking for one tap — the
-default flow on both platforms ends at the native compose/dial screen. The
-30s countdown is the actual safety mechanism (time for the user or a
-bystander to cancel); the final send/call is always a human action.
-
-If you've made a deliberate, consent-covered decision to remove that last
-tap on Android (Apple does not permit the equivalent on iOS), see
-`android_native_reference/SilentSmsModule.kt` — it is a reference sketch,
-not wired into the default build.
-
 ## Multi-language support
 
 English and Spanish today (`src/passed/locales/en.json`, `es.json`), switched
@@ -197,13 +170,13 @@ raw key or drop a value.
 src/
   types/               shared TS types, no RN dependency
   signal/              pure signal-processing core (ppgProcessor, hrvAnalysis,
-                        collapseDetector, triageEngine, fingerTapAnalysis,
-                        faceSymmetryAnalysis, speechAnalysis, historyTrends,
-                        facialPallorAnalysis) — no RN imports, unit tested
+                        triageEngine, fingerTapAnalysis, faceSymmetryAnalysis,
+                        speechAnalysis, historyTrends, facialPallorAnalysis)
+                        — no RN imports, unit tested
   sensors/              camera PPG + face-landmark camera + face-color camera +
-                        speech capture + accelerometer + permissions bridges to RN/native
+                        speech capture + permissions bridges to RN/native
   services/             emergency contacts storage, check history storage,
-                        skin-tone baseline storage, language storage, alert/countdown, location, MonitorProvider
+                        skin-tone baseline storage, language storage, location, MonitorProvider
   passed/                i18next setup + locales/en.json, locales/es.json
   screens/, navigation/, components/   UI
 __tests__/              Jest tests for src/signal/* and src/passed/locales/*
@@ -313,29 +286,24 @@ export NODE_BINARY=/absolute/path/to/node
 Both mobile OSes restrict what a foregrounded-only consumer app can do once
 it's backgrounded:
 
-- **iOS**: no background camera access at all (so no background PPG, ever),
-  and background accelerometer streaming for third-party apps is heavily
-  restricted outside of specific frameworks Apple reserves mostly for its
-  own Health/Fitness stack.
-- **Android**: the JS thread and sensor listeners stop when the app is
+- **iOS**: no background camera access at all, so no background PPG, ever.
+- **Android**: the JS thread and camera/sensor access stop when the app is
   backgrounded unless you run a persistent foreground service (not included
   here — it needs its own always-on notification and battery tradeoffs you
   should decide on deliberately, not something to bolt on silently).
 
-Practically: treat **Active Check** as the reliable, on-demand tool, and
-**passive collapse monitoring** as a best-effort feature that only works
-while the app is open and on-screen. The triage engine reflects this reality
-— it treats "no recent Active Check reading" as "pulse status unknown," and
-leans on collapse + unresponsiveness alone for the CRITICAL path, rather
-than pretending a continuous live pulse fusion exists that the phone
-structurally cannot provide.
+Practically: **Active Check** (and every other check in this app) is a
+reliable, on-demand tool that only ever runs while the app is open and
+on-screen — there is no continuous background monitoring of any kind. The
+triage engine reflects this reality: it treats "no recent Active Check
+reading" as "pulse status unknown" rather than pretending a continuous live
+pulse fusion exists that the phone structurally cannot provide.
 
 ## Medical & safety disclaimer
 
 Verita Health is a screening aid, not a diagnostic or treatment device. It
 has not been reviewed or cleared by the FDA or any other regulator. Its
-pulse estimate comes from camera PPG, not ECG; its collapse detection is a
-heuristic over accelerometer data; its facial-symmetry check is a
+pulse estimate comes from camera PPG, not ECG; its facial-symmetry check is a
 camera-landmark heuristic that can't tell a stroke apart from Bell's palsy,
 an old injury, or ordinary resting asymmetry, and normal lighting/camera
 angle can throw it off; its speech check depends on on-device speech
@@ -374,26 +342,24 @@ clinically validated cutoffs.
 npm test
 ```
 
-Covers `src/signal/ppgProcessor.ts`, `hrvAnalysis.ts`, `collapseDetector.ts`,
-`triageEngine.ts`, `fingerTapAnalysis.ts`, `faceSymmetryAnalysis.ts`,
-`speechAnalysis.ts`, `historyTrends.ts`, and `facialPallorAnalysis.ts` with
-synthetic signals (regular/irregular pulse, collapse/no-collapse/ambiguous
-accelerometer scenarios, symmetric/asymmetric tap patterns,
+Covers `src/signal/ppgProcessor.ts`, `hrvAnalysis.ts`, `triageEngine.ts`,
+`fingerTapAnalysis.ts`, `faceSymmetryAnalysis.ts`, `speechAnalysis.ts`,
+`historyTrends.ts`, and `facialPallorAnalysis.ts` with synthetic signals
+(regular/irregular pulse, symmetric/asymmetric tap patterns,
 symmetric/drooping synthetic face landmarks, exact/garbled/slow synthetic
 transcripts, every triage branch, trend summaries over
 empty/single/multi-point series, and pale/normal synthetic skin-color
 samples against a synthetic baseline), plus `src/passed/locales/en.json` and
 `es.json` for key parity and matching `{{variable}}` interpolation names
-across languages. The PPG and collapse math
-were also independently sanity-checked against a parallel Python port during
-development — same synthetic scenarios, same pass/fail outcomes.
+across languages. The PPG math was also independently sanity-checked against
+a parallel Python port during development — same synthetic scenarios, same
+pass/fail outcomes.
 
 Native-dependent code (`src/sensors/*`, `src/screens/*`) isn't covered by
-this suite — Jest can't exercise a real camera or accelerometer. What *was*
-verified during development: a full `./gradlew assembleDebug` (Android) and
+this suite — Jest can't exercise a real camera. What *was* verified during
+development: a full `./gradlew assembleDebug` (Android) and
 `xcodebuild ... build` for the iOS Simulator both completed successfully
 against this exact source tree, so the native build graph (VisionCamera +
 worklets-core + all other pods/AARs) is known-good. That's a build-succeeds
-check, not a functional one — actually exercising Active Check / collapse
-detection / the emergency flow still needs a real device or simulator run
-with a person tapping through it.
+check, not a functional one — actually exercising Active Check still needs a
+real device or simulator run with a person tapping through it.

@@ -8,7 +8,6 @@ import { ActiveCheckScreen } from '../screens/ActiveCheckScreen';
 import { StrokeCheckScreen } from '../screens/StrokeCheckScreen';
 import { FaceCheckScreen } from '../screens/FaceCheckScreen';
 import { SpeechCheckScreen } from '../screens/SpeechCheckScreen';
-import { EmergencyAlertScreen } from '../screens/EmergencyAlertScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
 import { EmergencyContactsScreen } from '../screens/EmergencyContactsScreen';
 import { HistoryScreen } from '../screens/HistoryScreen';
@@ -56,11 +55,6 @@ export function RootNavigator() {
         <Stack.Screen name="StrokeCheck" component={StrokeCheckScreen} options={{ title: t('stroke.fingerTap.title') }} />
         <Stack.Screen name="FaceCheck" component={FaceCheckScreen} options={{ title: t('stroke.faceCheck.title') }} />
         <Stack.Screen name="SpeechCheck" component={SpeechCheckScreen} options={{ title: t('stroke.speechCheck.title') }} />
-        <Stack.Screen
-          name="EmergencyAlert"
-          component={EmergencyAlertScreen}
-          options={{ headerShown: false, gestureEnabled: false }}
-        />
         <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: t('home.quickActions.settings') }} />
         <Stack.Screen
           name="EmergencyContacts"

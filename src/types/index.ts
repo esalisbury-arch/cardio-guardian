@@ -8,13 +8,6 @@ export interface TimedSample {
   v: number;
 }
 
-export interface AccelSample {
-  t: number;
-  x: number;
-  y: number;
-  z: number;
-}
-
 export type SignalQuality = 'no-signal' | 'poor' | 'fair' | 'good';
 
 export interface PulseReading {
@@ -36,29 +29,16 @@ export interface IrregularityResult {
   reliable: boolean;
 }
 
-export interface CollapseEvent {
-  detectedAt: number;
-  impactMagnitudeG: number;
-  stillnessMs: number;
-  confidence: number;
-}
-
-export type RiskLevel = 'NORMAL' | 'LOW' | 'WARNING' | 'CRITICAL';
+export type RiskLevel = 'NORMAL' | 'LOW';
 
 export interface TriageInput {
   pulse: PulseReading | null;
   irregularity: IrregularityResult | null;
-  collapse: CollapseEvent | null;
-  /** did the user acknowledge the on-screen "are you OK" prompt in time? null = prompt not yet resolved */
-  userResponded: boolean | null;
-  now: number;
 }
 
 export interface TriageResult {
   level: RiskLevel;
   reasons: string[];
-  /** if true, UI should immediately launch the emergency countdown flow */
-  triggerEmergencyFlow: boolean;
 }
 
 export interface EmergencyContact {

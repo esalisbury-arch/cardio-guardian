@@ -1,17 +1,12 @@
 <!--
   Merge these into android/app/src/main/AndroidManifest.xml after running
-  `react-native init`. SEND_SMS is only needed if you wire up the optional
-  SilentSmsModule.kt path — the default JS flow (Linking to the native SMS
-  composer) needs no SMS permission at all.
+  `react-native init`.
 -->
 <uses-permission android:name="android.permission.CAMERA" />
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 <!-- Used by @react-native-voice/voice's Android SpeechRecognizer for Speech Check -->
 <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
-<!-- Optional: only if you enable the silent-SMS reference module -->
-<uses-permission android:name="android.permission.SEND_SMS" />
 
 <!-- Declares camera+flash hardware use for VisionCamera PPG capture -->
 <uses-feature android:name="android.hardware.camera" android:required="true" />

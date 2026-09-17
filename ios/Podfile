@@ -16,7 +16,6 @@ setup_permissions([
   'Camera',
   'Microphone',
   'SpeechRecognition',
-  'Motion',
   'LocationWhenInUse',
 ])
 

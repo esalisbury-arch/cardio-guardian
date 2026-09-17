@@ -33,11 +33,9 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>If Verita Health ever detects a possible emergency, your last known location can be included in the alert sent to your emergency contacts.</string>
+	<string>Verita Health uses your location to help you find nearby emergency and cardiovascular care.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Verita Health reads your pulse and checks facial symmetry using the camera. No images are stored or transmitted.</string>
-	<key>NSMotionUsageDescription</key>
-	<string>Verita Health uses motion data to detect a possible collapse (sudden fall followed by no movement) while the app is open.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Verita Health uses the microphone during Speech Check to screen for slurred speech, a stroke warning sign. No audio is stored or transmitted.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>

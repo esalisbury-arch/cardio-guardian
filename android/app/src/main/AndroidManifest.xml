@@ -5,9 +5,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <!-- SEND_SMS intentionally omitted: the default alert flow opens the native
-         SMS composer via Linking, which needs no permission. Only add this if
-         you deliberately wire up android_native_reference/SilentSmsModule.kt. -->
 
     <uses-feature android:name="android.hardware.camera" android:required="true" />
     <uses-feature android:name="android.hardware.camera.flash" android:required="true" />

@@ -15,26 +15,20 @@
   },
   "riskBadge": {
     "normal": "Normal",
-    "low": "Marcado para seguimiento",
-    "warning": "Verificando",
-    "critical": "Emergencia"
+    "low": "Marcado para seguimiento"
   },
   "onboarding": {
     "title": "Antes de comenzar",
-    "p1": "Verita Health es una ayuda de detección, no un dispositivo médico. No ha sido evaluada ni aprobada por la FDA ni por ningún otro organismo regulador. Utiliza la cámara y el acelerómetro de tu teléfono para estimar el pulso y detectar patrones de colapso — ambos son aproximaciones que pueden pasar por alto emergencias reales (falsos negativos) y pueden generar falsas alarmas (falsos positivos).",
+    "p1": "Verita Health es una ayuda de detección, no un dispositivo médico. No ha sido evaluada ni aprobada por la FDA ni por ningún otro organismo regulador. Utiliza la cámara de tu teléfono para estimar el pulso — una aproximación que puede pasar por alto emergencias reales (falsos negativos) y puede generar falsas alarmas (falsos positivos).",
     "p2": "No reemplaza llamar a tu número de emergencias local, buscar atención médica ni un ECG clínico. Si en algún momento sientes que estás teniendo una emergencia médica, contacta a los servicios de emergencia de inmediato — no esperes a esta aplicación.",
-    "p3": "Para funcionar, Verita Health necesita: acceso a la cámara (para leer tu pulso mediante contacto con la yema del dedo), acceso al movimiento (para detectar un posible colapso) y acceso a la ubicación (para incluir tu ubicación si alguna vez alerta a tus contactos de emergencia). Puedes revocar cualquiera de estos permisos en cualquier momento desde la configuración de tu teléfono, lo cual simplemente desactivará la función correspondiente.",
-    "p4": "El monitoreo en segundo plano es limitado por diseño: tanto iOS como Android restringen lo que las aplicaciones de terceros pueden hacer cuando no están en primer plano. Considera el \"Chequeo Activo\" dentro de la app como tu herramienta confiable bajo demanda, y el monitoreo pasivo de colapso como una función de mejor esfuerzo en primer plano — no como una garantía permanente.",
+    "p3": "Para funcionar, Verita Health necesita: acceso a la cámara (para leer tu pulso mediante contacto con la yema del dedo) y acceso a la ubicación (para ayudarte a encontrar atención de emergencia cercana). Puedes revocar cualquiera de estos permisos en cualquier momento desde la configuración de tu teléfono, lo cual simplemente desactivará la función correspondiente.",
+    "p4": "El monitoreo en segundo plano es limitado por diseño: tanto iOS como Android restringen lo que las aplicaciones de terceros pueden hacer cuando no están en primer plano. Considera el \"Chequeo Activo\" dentro de la app como tu herramienta confiable bajo demanda, en lugar de algo que se ejecuta continuamente en segundo plano.",
     "requestingPermissions": "Solicitando permisos…",
     "continueButton": "Entiendo, continuar"
   },
   "home": {
     "heading": "Verita Health",
-    "checkIn": {
-      "title": "Posible colapso detectado",
-      "body": "¿Estás bien? Si no sabemos de ti en {{seconds}}s, trataremos esto como una posible emergencia.",
-      "imOk": "Estoy bien"
-    },
+    "resourcesLabel": "Recursos",
     "quickActions": {
       "history": "Historial",
       "nearbyHospitals": "Hospitales Cercanos",
@@ -43,7 +37,7 @@
     },
     "heartAttackScreening": {
       "title": "Detección de Ataque Cardíaco",
-      "subtitle": "Ritmo del pulso, monitoreo de colapso y palidez repentina"
+      "subtitle": "Ritmo del pulso y palidez repentina"
     },
     "strokeScreening": {
       "title": "Detección de Accidente Cerebrovascular (FAST)",
@@ -51,7 +45,7 @@
     }
   },
   "heartAttack": {
-    "intro": "Detecta un posible paro cardíaco súbito y un posible ataque cardíaco — ritmo del pulso, un colapso repentino sin respuesta y palidez repentina.",
+    "intro": "Detecta posibles señales de alerta de ataque cardíaco — ritmo del pulso y palidez repentina.",
     "lastPulseReading": {
       "title": "Última lectura de pulso",
       "empty": "Sin lectura reciente — realiza un Chequeo Activo",
@@ -64,10 +58,6 @@
     "pallorCheck": {
       "title": "Prueba de Palidez",
       "subtitle": "Detecta palidez repentina frente a tu valor de referencia guardado — una posible señal de ataque cardíaco"
-    },
-    "passiveMonitoring": {
-      "title": "Monitoreo pasivo de colapso",
-      "subtitle": "Solo en primer plano — vigila una caída repentina seguida de inmovilidad"
     }
   },
   "stroke": {
@@ -202,26 +192,17 @@
   "settings": {
     "regionLabel": "Tu región (código de país de 2 letras)",
     "regionPlaceholder": "p. ej. US, GB, IN",
-    "regionHint": "Número de emergencias local: {{number}}. Actualiza esto cuando viajes — un número incorrecto aquí hace que el botón \"Llamar ahora\" en una alerta de emergencia marque al servicio equivocado.",
+    "regionHint": "Número de emergencias local: {{number}}. Actualiza esto cuando viajes — un número incorrecto aquí hace que el botón \"Llamar ahora\" en Hospitales Cercanos marque al servicio equivocado.",
     "languageLabel": "Idioma"
   },
   "emergencyContacts": {
     "heading": "Contactos de emergencia",
-    "hint": "Estas personas recibirán un mensaje de texto prellenado (con tu ubicación, si está disponible) si se detecta una posible emergencia y no respondes a tiempo. Tú siempre decides si el mensaje realmente se envía.",
+    "hint": "Mantén esta lista actualizada. Verita Health no les envía alertas automáticamente — en una emergencia real, usa el marcador de tu teléfono o el botón \"Llamar ahora\" en Hospitales Cercanos.",
     "remove": "Eliminar",
     "empty": "Aún no se han agregado contactos.",
     "namePlaceholder": "Nombre",
     "phonePlaceholder": "Número de teléfono",
     "addContact": "Agregar contacto"
-  },
-  "emergencyAlert": {
-    "title": "Posible emergencia cardíaca",
-    "countdownBodyWithCount": "Si no cancelas, abriremos un mensaje de texto a tus {{count}} contacto(s) de emergencia con tu ubicación. Deberás presionar enviar — esta app nunca envía mensajes en silencio.",
-    "countdownBodyNoCount": "Si no cancelas, abriremos un mensaje de texto a tus contactos de emergencia guardados con tu ubicación. Deberás presionar enviar — esta app nunca envía mensajes en silencio.",
-    "sentBody": "Mensaje de alerta preparado para tus contactos de emergencia. Por favor, también llama al {{number}} si tú o alguien cerca necesita ayuda inmediata.",
-    "callNow": "Llamar al {{number}} ahora",
-    "cancelSafe": "Estoy a salvo — cancelar",
-    "backToHome": "Volver al inicio"
   },
   "nearbyHospitals": {
     "emergencyTitle": "¿Tienes una emergencia en este momento?",

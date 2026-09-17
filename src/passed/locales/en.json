@@ -15,26 +15,20 @@
   },
   "riskBadge": {
     "normal": "Normal",
-    "low": "Flagged for follow-up",
-    "warning": "Checking in",
-    "critical": "Emergency"
+    "low": "Flagged for follow-up"
   },
   "onboarding": {
     "title": "Before you start",
-    "p1": "Verita Health is a screening aid, not a medical device. It has not been evaluated or cleared by the FDA or any other regulator. It uses your phone's camera and accelerometer to estimate pulse and detect collapse patterns — both are approximations that can miss real emergencies (false negatives) and can raise false alarms (false positives).",
+    "p1": "Verita Health is a screening aid, not a medical device. It has not been evaluated or cleared by the FDA or any other regulator. It uses your phone's camera to estimate pulse — an approximation that can miss real emergencies (false negatives) and can raise false alarms (false positives).",
     "p2": "It does not replace calling your local emergency number, seeking medical care, or a clinical ECG. If you ever feel you are having a medical emergency, contact emergency services immediately — don't wait on this app.",
-    "p3": "To work, Verita Health needs: camera access (to read your pulse via fingertip contact), motion access (to detect a possible collapse), and location access (to include your location if it ever alerts your emergency contacts). You can revoke any of these at any time in your phone's settings, which will simply disable the related feature.",
-    "p4": "Background monitoring is limited by design: iOS and Android both restrict what third-party apps can do while not in the foreground. Treat the in-app \"Active Check\" as your reliable, on-demand tool, and passive collapse monitoring as a best-effort foreground feature — not an always-on guarantee.",
+    "p3": "To work, Verita Health needs: camera access (to read your pulse via fingertip contact) and location access (to help you find nearby emergency care). You can revoke any of these at any time in your phone's settings, which will simply disable the related feature.",
+    "p4": "Background monitoring is limited by design: iOS and Android both restrict what third-party apps can do while not in the foreground. Treat the in-app \"Active Check\" as your reliable, on-demand tool rather than something that runs continuously in the background.",
     "requestingPermissions": "Requesting permissions…",
     "continueButton": "I understand, continue"
   },
   "home": {
     "heading": "Verita Health",
-    "checkIn": {
-      "title": "Possible collapse detected",
-      "body": "Are you OK? If we don't hear from you within {{seconds}}s, we'll treat this as a possible emergency.",
-      "imOk": "I'm OK"
-    },
+    "resourcesLabel": "Resources",
     "quickActions": {
       "history": "History",
       "nearbyHospitals": "Nearby Hospitals",
@@ -43,7 +37,7 @@
     },
     "heartAttackScreening": {
       "title": "Heart Attack Screening",
-      "subtitle": "Pulse rhythm, collapse monitoring, and sudden pale/ashen skin"
+      "subtitle": "Pulse rhythm and sudden pale/ashen skin"
     },
     "strokeScreening": {
       "title": "Stroke Screening (FAST)",
@@ -51,7 +45,7 @@
     }
   },
   "heartAttack": {
-    "intro": "Screens for suspected sudden cardiac arrest and possible heart attack — pulse rhythm, a sudden collapse with no response, and sudden pale/ashen skin.",
+    "intro": "Screens for possible heart attack warning signs — pulse rhythm and sudden pale/ashen skin.",
     "lastPulseReading": {
       "title": "Last pulse reading",
       "empty": "No recent reading — run an Active Check",
@@ -64,10 +58,6 @@
     "pallorCheck": {
       "title": "Pallor Check",
       "subtitle": "Screen for sudden pale/ashen skin vs. your saved baseline — a possible heart attack sign"
-    },
-    "passiveMonitoring": {
-      "title": "Passive collapse monitoring",
-      "subtitle": "Foreground only — watches for a sudden fall + stillness"
     }
   },
   "stroke": {
@@ -202,26 +192,17 @@
   "settings": {
     "regionLabel": "Your region (2-letter country code)",
     "regionPlaceholder": "e.g. US, GB, IN",
-    "regionHint": "Local emergency number: {{number}}. Update this when you travel — the wrong number here means the \"Call now\" button in an emergency alert dials the wrong service.",
+    "regionHint": "Local emergency number: {{number}}. Update this when you travel — the wrong number here means the \"Call now\" button on Nearby Hospitals dials the wrong service.",
     "languageLabel": "Language"
   },
   "emergencyContacts": {
     "heading": "Emergency contacts",
-    "hint": "These people get a pre-filled text (with your location, if available) if a possible emergency is detected and unresponsive check-in times out. You always control whether it actually sends.",
+    "hint": "Keep this list up to date. Verita Health doesn't send alerts to them automatically — in a real emergency, use your phone's own dialer or the \"Call now\" button on Nearby Hospitals.",
     "remove": "Remove",
     "empty": "No contacts added yet.",
     "namePlaceholder": "Name",
     "phonePlaceholder": "Phone number",
     "addContact": "Add contact"
-  },
-  "emergencyAlert": {
-    "title": "Possible cardiac emergency",
-    "countdownBodyWithCount": "If you don't cancel, we'll open a text to your {{count}} emergency contact(s) with your location. You'll need to hit send — this app never sends messages silently.",
-    "countdownBodyNoCount": "If you don't cancel, we'll open a text to your saved emergency contacts with your location. You'll need to hit send — this app never sends messages silently.",
-    "sentBody": "Alert message prepared for your emergency contacts. Please also call {{number}} if you or someone nearby needs immediate help.",
-    "callNow": "Call {{number}} now",
-    "cancelSafe": "I'm safe — cancel",
-    "backToHome": "Back to home"
   },
   "nearbyHospitals": {
     "emergencyTitle": "Having an emergency right now?",
