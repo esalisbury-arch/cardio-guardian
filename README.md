@@ -5,12 +5,11 @@ flash, microphone, touchscreen) to screen for two narrow, specific patterns:
 **possible heart attack** via pulse rhythm and sudden facial pallor (skin
 color compared against a saved personal baseline, since skin tone itself
 varies too much across people for any absolute "pale" threshold to mean
-anything), and **possible stroke** via all four FAST warning signs — **F**ace
-drooping (facial-landmark symmetry via the front camera), **A**rm weakness (a
-finger tapping test), **S**peech difficulty (on-device speech recognition
-against a test phrase), and **T**ime (a manually-started onset stopwatch,
-since Time is a call to action rather than something a sensor can detect). It
-is a screening aid to help someone get help faster, not a diagnostic or
+anything), and **possible stroke** via three of the FAST warning signs —
+**F**ace drooping (facial-landmark symmetry via the front camera), **A**rm
+weakness (a finger tapping test), and **S**peech difficulty (on-device speech
+recognition against a test phrase). It is a screening aid to help someone
+get help faster, not a diagnostic or
 FDA-cleared medical device. See [Medical & safety
 disclaimer](#medical--safety-disclaimer) before using or distributing it.
 
@@ -88,18 +87,6 @@ disclaimer](#medical--safety-disclaimer) before using or distributing it.
   breath, pain radiating to arm/jaw, cold sweat, nausea) matter far more
   than this check and warrant calling emergency services regardless of what
   it shows.
-- **Symptom-onset timer** (`src/screens/StrokeScreeningScreen.tsx`,
-  `src/services/symptomTimer.ts`): the "Time" in FAST — Face, Arm, Speech,
-  **Time** — isn't a sensor signal, it's a call to action, so this is a
-  manually-started stopwatch, not a detection heuristic. Elapsed time is
-  always recomputed live from the stored onset timestamp (`Date.now() -
-  onset`) rather than an incrementing counter, so it can't drift even if the
-  app is backgrounded for hours. Shown as a plain `HH:MM:SS` — deliberately
-  digits-and-colons only, no words, so it needs no translation and reads
-  like an actual stopwatch. Matters clinically: stroke treatment options
-  (e.g. clot-dissolving medication) are genuinely time-windowed, and EMS/ER
-  staff will ask exactly when symptoms started — this exists so that answer
-  is precise instead of a guess made under stress.
 - **History** (`src/screens/HistoryScreen.tsx`, `src/services/history.ts`,
   `src/signal/historyTrends.ts`): every completed Active Check, Face Check,
   Finger Tap Test, Speech Check, and Pallor Check is saved locally
@@ -316,10 +303,7 @@ exposure are specifically designed to normalize away rather than preserve,
 meaning a change in room lighting, a camera angle change, makeup, or a tan
 can all produce the same reading as real pallor, and the baseline it
 compares against is only as good as the lighting conditions it happened to
-be captured in. The "Time" part of FAST isn't a sensor signal — it's a call
-to action — so `src/screens/StrokeScreeningScreen.tsx`'s onset timer is
-exactly that: a stopwatch the user starts manually, not something the app
-detects or infers on its own. This app does not screen for the actual heart
+be captured in. This app does not screen for the actual heart
 attack warning signs that matter most (chest pain/pressure,
 shortness of breath, pain radiating to the arm/jaw/back, cold sweat,
 nausea) — pallor is a minor, supplementary signal, not a stand-in for those.

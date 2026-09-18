@@ -61,7 +61,7 @@
     }
   },
   "stroke": {
-    "intro": "Cara, Brazo, Habla y Tiempo son las cuatro señales de alerta FAST de un accidente cerebrovascular — Cara, Brazo y Habla a continuación son pruebas basadas en sensores; Tiempo es un llamado a la acción, no algo que un sensor pueda detectar, así que es un cronómetro en su lugar.",
+    "intro": "Cara, Brazo y Habla son tres de las señales de alerta FAST de un accidente cerebrovascular, cada una detectada a continuación usando la cámara o el micrófono de tu teléfono.",
     "faceCheck": {
       "title": "Chequeo Facial",
       "subtitle": "Busca caída facial usando la cámara frontal"
@@ -73,17 +73,6 @@
     "speechCheck": {
       "title": "Prueba de Habla",
       "subtitle": "Lee una frase en voz alta para detectar habla arrastrada"
-    },
-    "timer": {
-      "title": "Tiempo",
-      "subtitle": "La cuarta señal FAST — no es una prueba con sensores, es un llamado a la acción",
-      "notStartedBody": "Si la caída facial, la debilidad en el brazo o el habla arrastrada comenzaron de repente, anota la hora ahora. Opciones de tratamiento como los medicamentos que disuelven coágulos tienen una ventana de tiempo limitada — recibir atención antes mantiene más opciones disponibles.",
-      "startButton": "Los síntomas comenzaron ahora",
-      "elapsedLabel": "Tiempo desde que comenzaron los síntomas",
-      "elapsedHint": "Dile a los servicios de emergencia o al personal del hospital esta hora exacta — afecta directamente tus opciones de tratamiento.",
-      "resetButton": "Reiniciar",
-      "resetConfirmTitle": "¿Reiniciar el cronómetro de síntomas?",
-      "resetConfirmBody": "Esto borra la hora de inicio registrada. Hazlo solo si se inició por error — no una vez que los síntomas reales estén resolviéndose, ya que el tiempo ya transcurrido sigue siendo importante para los servicios de emergencia."
     }
   },
   "activeCheck": {

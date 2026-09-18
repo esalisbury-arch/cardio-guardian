@@ -61,7 +61,7 @@
     }
   },
   "stroke": {
-    "intro": "Face, Arm, Speech, and Time are the four FAST warning signs of stroke — Face, Arm, and Speech below are sensor-based checks; Time is a call to action, not something a sensor can detect, so it's a timer instead.",
+    "intro": "Face, Arm, and Speech are three of the FAST warning signs of stroke, each screened below using your phone's camera or microphone.",
     "faceCheck": {
       "title": "Face Check",
       "subtitle": "Look for facial drooping using the front camera"
@@ -73,17 +73,6 @@
     "speechCheck": {
       "title": "Speech Check",
       "subtitle": "Read a phrase aloud to screen for slurred speech"
-    },
-    "timer": {
-      "title": "Time",
-      "subtitle": "The fourth FAST sign — not a sensor check, a call to action",
-      "notStartedBody": "If face drooping, arm weakness, or slurred speech started suddenly, note the time now. Treatment options like clot-dissolving medication are time-windowed — getting care sooner keeps more of them open.",
-      "startButton": "Symptoms started now",
-      "elapsedLabel": "Time since symptoms started",
-      "elapsedHint": "Tell EMS or hospital staff this exact time — it directly affects your treatment options.",
-      "resetButton": "Reset",
-      "resetConfirmTitle": "Reset the symptom timer?",
-      "resetConfirmBody": "This clears the recorded start time. Only do this if it was started by mistake — not once real symptoms are resolving, since the time already elapsed still matters to EMS."
     }
   },
   "activeCheck": {

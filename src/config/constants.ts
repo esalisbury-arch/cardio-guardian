@@ -29,5 +29,4 @@ export const STORAGE_KEYS = {
   checkHistory: '@veritahealth/check_history',
   skinToneBaseline: '@veritahealth/skin_tone_baseline',
   language: '@veritahealth/language',
-  symptomOnset: '@veritahealth/symptom_onset',
 } as const;
