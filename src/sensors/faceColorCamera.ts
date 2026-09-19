@@ -28,13 +28,31 @@ import { SkinColorSample } from '../types';
 
 // Registered by the native plugin (see android_native_reference / ios_native_reference).
 const meanFaceColorPlugin = VisionCameraProxy.initFrameProcessorPlugin('meanFaceColor', {});
+// Trained Core ML anemia-risk classifier (ios/VeritaHealth/PallorClassifierPlugin.swift,
+// ml/pallor/train.py) — iOS only for now, no Android counterpart exists yet.
+const pallorClassifierPlugin = VisionCameraProxy.initFrameProcessorPlugin('classifyPallor', {});
 
-function meanFaceColor(frame: Frame): SkinColorSample {
+interface RawPallorScore {
+  scoreAvailable: boolean;
+  pallorModelScore?: number;
+}
+
+function meanFaceColor(frame: Frame): Omit<SkinColorSample, 'pallorModelScore'> {
   'worklet';
   if (!meanFaceColorPlugin) {
     throw new Error('meanFaceColor native plugin is not registered — see android_native_reference/');
   }
-  return meanFaceColorPlugin.call(frame) as unknown as SkinColorSample;
+  return meanFaceColorPlugin.call(frame) as unknown as Omit<SkinColorSample, 'pallorModelScore'>;
+}
+
+function classifyPallorRaw(frame: Frame): RawPallorScore | null {
+  'worklet';
+  // iOS-only plugin (see ios/VeritaHealth/PallorClassifierPlugin.swift) — no Android
+  // counterpart exists yet, so this is allowed to simply be unavailable there.
+  if (!pallorClassifierPlugin) {
+    return null;
+  }
+  return pallorClassifierPlugin.call(frame) as unknown as RawPallorScore;
 }
 
 export interface FaceColorCameraHandle {
@@ -48,8 +66,11 @@ export function useFaceColorCamera(onSample: (sample: SkinColorSample) => void):
   const onSampleRef = useRef(onSample);
   onSampleRef.current = onSample;
 
-  const handleSample = useCallback((sample: SkinColorSample) => {
-    onSampleRef.current(sample);
+  const handleSample = useCallback((sample: Omit<SkinColorSample, 'pallorModelScore'>, modelScore: RawPallorScore | null) => {
+    onSampleRef.current({
+      ...sample,
+      pallorModelScore: modelScore?.scoreAvailable ? modelScore.pallorModelScore ?? null : null,
+    });
   }, []);
 
   const runOnJSSample = useMemo(() => Worklets.createRunOnJS(handleSample), [handleSample]);
@@ -58,7 +79,8 @@ export function useFaceColorCamera(onSample: (sample: SkinColorSample) => void):
     (frame) => {
       'worklet';
       const sample = meanFaceColor(frame);
-      runOnJSSample(sample);
+      const modelScore = classifyPallorRaw(frame);
+      runOnJSSample(sample, modelScore);
     },
     [runOnJSSample]
   );

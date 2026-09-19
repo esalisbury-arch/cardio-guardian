@@ -75,6 +75,7 @@ export function PallorCheckScreen({ navigation }: Props) {
           timestamp: Date.now(),
           level: pallorResult.level,
           rednessDrop: pallorResult.reliable && !pallorResult.savedAsBaseline ? pallorResult.rednessDrop : null,
+          modelConfidence: pallorResult.reliable ? pallorResult.modelConfidence : null,
           reliable: pallorResult.reliable,
           savedAsBaseline: pallorResult.savedAsBaseline,
         }).catch((err) => console.warn('[history] failed to save Pallor Check result', err));
@@ -138,6 +139,9 @@ export function PallorCheckScreen({ navigation }: Props) {
                   value: Math.abs(result.rednessDrop * 100).toFixed(1),
                 })}
               </Text>
+            )}
+            {result.modelConfidence !== null && (
+              <Text style={styles.detail}>{t('pallorCheck.modelScore', { score: Math.round(result.modelConfidence * 100) })}</Text>
             )}
           </>
         )}

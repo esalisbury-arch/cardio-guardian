@@ -2,7 +2,7 @@ import { aggregateSkinColor, comparePallor, normalizedRedness } from '../src/sig
 import { PallorBaseline, SkinColorSample } from '../src/types';
 
 function makeSamples(count: number, color: { r: number; g: number; b: number }, faceDetected = true): SkinColorSample[] {
-  return Array.from({ length: count }, () => ({ ...color, faceDetected }));
+  return Array.from({ length: count }, () => ({ ...color, faceDetected, pallorModelScore: null }));
 }
 
 describe('normalizedRedness', () => {
@@ -29,7 +29,7 @@ describe('aggregateSkinColor', () => {
   it('uses the median so a couple of noisy frames do not skew the result', () => {
     const samples: SkinColorSample[] = [
       ...makeSamples(9, { r: 200, g: 150, b: 130 }),
-      { r: 0, g: 0, b: 0, faceDetected: true }, // one wild outlier
+      { r: 0, g: 0, b: 0, faceDetected: true, pallorModelScore: null }, // one wild outlier
     ];
     const result = aggregateSkinColor(samples);
     expect(result.r).toBeCloseTo(200);

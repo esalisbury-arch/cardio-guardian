@@ -61,6 +61,11 @@ export function aggregateSkinColor(samples: SkinColorSample[]): { r: number; g: 
   };
 }
 
+function modelConfidenceFrom(samples: SkinColorSample[]): number | null {
+  const scores = samples.map((s) => s.pallorModelScore).filter((s): s is number => s !== null && s !== undefined);
+  return scores.length === 0 ? null : median(scores);
+}
+
 /**
  * Compares a burst of camera color samples against a stored baseline. If no
  * baseline exists yet, this doesn't score anything — it reports that the
@@ -77,6 +82,7 @@ export function comparePallor(baseline: PallorBaseline | null, samples: SkinColo
       reasons: ['Not enough clear frames of your face to assess skin color — try again with better, even lighting'],
       rednessDrop: 0,
       normalizedRedness: 0,
+      modelConfidence: null,
       sampleCount: aggregate.sampleCount,
       reliable: false,
       savedAsBaseline: false,
@@ -84,6 +90,7 @@ export function comparePallor(baseline: PallorBaseline | null, samples: SkinColo
   }
 
   const currentRedness = normalizedRedness(aggregate);
+  const modelConfidence = modelConfidenceFrom(samples);
 
   if (!baseline) {
     return {
@@ -91,6 +98,7 @@ export function comparePallor(baseline: PallorBaseline | null, samples: SkinColo
       reasons: ['No baseline yet — this capture has been saved as your normal skin color for future comparisons'],
       rednessDrop: 0,
       normalizedRedness: currentRedness,
+      modelConfidence,
       sampleCount: aggregate.sampleCount,
       reliable: true,
       savedAsBaseline: true,
@@ -110,6 +118,7 @@ export function comparePallor(baseline: PallorBaseline | null, samples: SkinColo
       ],
       rednessDrop,
       normalizedRedness: currentRedness,
+      modelConfidence,
       sampleCount: aggregate.sampleCount,
       reliable: true,
       savedAsBaseline: false,
@@ -121,6 +130,7 @@ export function comparePallor(baseline: PallorBaseline | null, samples: SkinColo
     reasons: ['Skin tone looks consistent with your saved baseline'],
     rednessDrop,
     normalizedRedness: currentRedness,
+    modelConfidence,
     sampleCount: aggregate.sampleCount,
     reliable: true,
     savedAsBaseline: false,
