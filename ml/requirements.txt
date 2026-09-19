@@ -1,0 +1,10 @@
+tensorflow==2.21.0
+keras==3.15.1
+coremltools==9.0
+huggingface_hub==1.32.0
+pillow==12.3.0
+numpy==2.5.3
+scikit-learn==1.5.1
+scipy==1.18.1
+h5py==3.14.0
+opencv-python-headless==5.0.0.93

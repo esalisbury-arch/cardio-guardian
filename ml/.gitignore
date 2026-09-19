@@ -1,0 +1,8 @@
+.venv/
+data/
+*.mlpackage
+*.mlmodel
+*.h5
+*.zip
+__pycache__/
+*.pyc
