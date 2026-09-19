@@ -14,6 +14,14 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		22559BA11378665ACCA88AEC /* FaceLandmarksPluginRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = AC05EC154281A305537BB579 /* FaceLandmarksPluginRegistration.m */; };
+		B8E950A5722BA4E8F3CFB130 /* FacialAsymmetryClassifierPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2459B213CFA406C56A60C /* FacialAsymmetryClassifierPlugin.swift */; };
+		8FF138140E04C4AC48AF1137 /* FacialAsymmetryClassifierPluginRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A2FB6AA25F7F9F08298879 /* FacialAsymmetryClassifierPluginRegistration.m */; };
+		D107C2E8A700FB0759AF6339 /* FacialAsymmetryClassifier.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = FE44AD5A682D8EEB8C5F2497 /* FacialAsymmetryClassifier.mlpackage */; };
+		ECE1F88652A900D5CE6D6C7F /* FacialAsymmetryClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F08C7542627251D3C01B013 /* FacialAsymmetryClassifier.swift */; };
+		E628D476AEC4DC671C82BE1C /* PallorClassifierPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2450B47C1ABE5B94FACC48CC /* PallorClassifierPlugin.swift */; };
+		FB9D554B09812B767C616C40 /* PallorClassifierPluginRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 8724EB3FB0AC910D73E8ACB6 /* PallorClassifierPluginRegistration.m */; };
+		92CBCA0783BCC891B37DA739 /* PallorClassifier.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = FD07696FE6E17A75D0D16126 /* PallorClassifier.mlpackage */; };
+		8A213653D67A357E8376C34F /* PallorClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D92BAE2AD9D4AD09F03F0 /* PallorClassifier.swift */; };
 		3F4C1B3EC3CB514B6CF20DBA /* MeanFaceColorPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44702D4EB50638989661203D /* MeanFaceColorPlugin.swift */; };
 		62C49816E83E5B40643D7374 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C0124A81C7F9F5F1520D81AE /* PrivacyInfo.xcprivacy */; };
 		7699B88040F8A987B510C191 /* libPods-VeritaHealth-VeritaHealthTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-VeritaHealth-VeritaHealthTests.a */; };
@@ -56,6 +64,14 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-VeritaHealth-VeritaHealthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeritaHealth-VeritaHealthTests.release.xcconfig"; path = "Target Support Files/Pods-VeritaHealth-VeritaHealthTests/Pods-VeritaHealth-VeritaHealthTests.release.xcconfig"; sourceTree = "<group>"; };
 		8FD6A0A5D9541628373A947B /* FaceLandmarksPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FaceLandmarksPlugin.swift; path = VeritaHealth/FaceLandmarksPlugin.swift; sourceTree = "<group>"; };
 		AC05EC154281A305537BB579 /* FaceLandmarksPluginRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaceLandmarksPluginRegistration.m; path = VeritaHealth/FaceLandmarksPluginRegistration.m; sourceTree = "<group>"; };
+		6AB2459B213CFA406C56A60C /* FacialAsymmetryClassifierPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacialAsymmetryClassifierPlugin.swift; path = VeritaHealth/FacialAsymmetryClassifierPlugin.swift; sourceTree = "<group>"; };
+		57A2FB6AA25F7F9F08298879 /* FacialAsymmetryClassifierPluginRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacialAsymmetryClassifierPluginRegistration.m; path = VeritaHealth/FacialAsymmetryClassifierPluginRegistration.m; sourceTree = "<group>"; };
+		FE44AD5A682D8EEB8C5F2497 /* FacialAsymmetryClassifier.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = FacialAsymmetryClassifier.mlpackage; path = VeritaHealth/Models/FacialAsymmetryClassifier.mlpackage; sourceTree = "<group>"; };
+		6F08C7542627251D3C01B013 /* FacialAsymmetryClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacialAsymmetryClassifier.swift; path = VeritaHealth/FacialAsymmetryClassifier.swift; sourceTree = "<group>"; };
+		2450B47C1ABE5B94FACC48CC /* PallorClassifierPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PallorClassifierPlugin.swift; path = VeritaHealth/PallorClassifierPlugin.swift; sourceTree = "<group>"; };
+		8724EB3FB0AC910D73E8ACB6 /* PallorClassifierPluginRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PallorClassifierPluginRegistration.m; path = VeritaHealth/PallorClassifierPluginRegistration.m; sourceTree = "<group>"; };
+		FD07696FE6E17A75D0D16126 /* PallorClassifier.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = PallorClassifier.mlpackage; path = VeritaHealth/Models/PallorClassifier.mlpackage; sourceTree = "<group>"; };
+		849D92BAE2AD9D4AD09F03F0 /* PallorClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PallorClassifier.swift; path = VeritaHealth/PallorClassifier.swift; sourceTree = "<group>"; };
 		C0124A81C7F9F5F1520D81AE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = VeritaHealth/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		EB3283F1E9A6692F48B0FA2B /* MeanRedChannelPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeanRedChannelPlugin.swift; path = VeritaHealth/MeanRedChannelPlugin.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -115,6 +131,14 @@
 				73CC6F15646892312AA2755D /* MeanFaceColorPluginRegistration.m */,
 				8FD6A0A5D9541628373A947B /* FaceLandmarksPlugin.swift */,
 				AC05EC154281A305537BB579 /* FaceLandmarksPluginRegistration.m */,
+				6AB2459B213CFA406C56A60C /* FacialAsymmetryClassifierPlugin.swift */,
+				57A2FB6AA25F7F9F08298879 /* FacialAsymmetryClassifierPluginRegistration.m */,
+				FE44AD5A682D8EEB8C5F2497 /* FacialAsymmetryClassifier.mlpackage */,
+				6F08C7542627251D3C01B013 /* FacialAsymmetryClassifier.swift */,
+				2450B47C1ABE5B94FACC48CC /* PallorClassifierPlugin.swift */,
+				8724EB3FB0AC910D73E8ACB6 /* PallorClassifierPluginRegistration.m */,
+				FD07696FE6E17A75D0D16126 /* PallorClassifier.mlpackage */,
+				849D92BAE2AD9D4AD09F03F0 /* PallorClassifier.swift */,
 			);
 			name = VeritaHealth;
 			sourceTree = "<group>";
@@ -268,6 +292,8 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				62C49816E83E5B40643D7374 /* PrivacyInfo.xcprivacy in Resources */,
+				D107C2E8A700FB0759AF6339 /* FacialAsymmetryClassifier.mlpackage in Resources */,
+				92CBCA0783BCC891B37DA739 /* PallorClassifier.mlpackage in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +466,12 @@
 				ADD2C212A112494B9D7ED387 /* MeanFaceColorPluginRegistration.m in Sources */,
 				F509C89C606CB80D628273BE /* FaceLandmarksPlugin.swift in Sources */,
 				22559BA11378665ACCA88AEC /* FaceLandmarksPluginRegistration.m in Sources */,
+				B8E950A5722BA4E8F3CFB130 /* FacialAsymmetryClassifierPlugin.swift in Sources */,
+				8FF138140E04C4AC48AF1137 /* FacialAsymmetryClassifierPluginRegistration.m in Sources */,
+				ECE1F88652A900D5CE6D6C7F /* FacialAsymmetryClassifier.swift in Sources */,
+				E628D476AEC4DC671C82BE1C /* PallorClassifierPlugin.swift in Sources */,
+				FB9D554B09812B767C616C40 /* PallorClassifierPluginRegistration.m in Sources */,
+				8A213653D67A357E8376C34F /* PallorClassifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +496,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = VeritaHealthTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,7 +520,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = VeritaHealthTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,7 +644,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				COREML_CODEGEN_LANGUAGE = Swift;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD = "";
 				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -688,7 +721,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				COREML_CODEGEN_LANGUAGE = Swift;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD = "";
 				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (

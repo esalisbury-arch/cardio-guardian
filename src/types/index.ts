@@ -93,6 +93,13 @@ export interface FaceLandmarkFrame {
   rightEyeBottom: Point | null;
   leftMouthCorner: Point | null;
   rightMouthCorner: Point | null;
+  /**
+   * 0..1 output of the trained facial-asymmetry classifier (ml/face/train.py), or null
+   * when unavailable (Android has no counterpart plugin yet, or the native call failed).
+   * See FacialAsymmetryClassifierPlugin.swift for the model's data-provenance caveats —
+   * it's a Bell's-palsy-trained proxy, not a stroke-specific classifier.
+   */
+  asymmetryModelScore: number | null;
 }
 
 export interface FaceSymmetryResult {
@@ -104,6 +111,8 @@ export interface FaceSymmetryResult {
   eyeAsymmetry: number;
   /** 0 (symmetric) .. 1 (highly asymmetric) */
   asymmetryScore: number;
+  /** median trained-model score across the burst, or null if the model was unavailable every frame */
+  modelConfidence: number | null;
   /** number of frames with a fully-detected face used in the result */
   sampleCount: number;
   reliable: boolean;
@@ -132,6 +141,8 @@ export interface FaceCheckHistoryEntry extends HistoryEntryBase {
   level: 'NORMAL' | 'LOW';
   /** null when the burst wasn't reliable (face lost, too few good frames) */
   asymmetryScore: number | null;
+  /** median trained-model score across the burst, or null if unreliable/unavailable — see FaceSymmetryResult */
+  modelConfidence: number | null;
   reliable: boolean;
 }
 
@@ -155,6 +166,8 @@ export interface PallorCheckHistoryEntry extends HistoryEntryBase {
   level: 'NORMAL' | 'LOW';
   /** null when unreliable, or when this capture was saved as a new baseline instead of compared */
   rednessDrop: number | null;
+  /** median trained-model score across the burst, or null if unreliable/unavailable — see PallorResult */
+  modelConfidence: number | null;
   reliable: boolean;
   savedAsBaseline: boolean;
 }
@@ -182,6 +195,13 @@ export interface SkinColorSample {
   b: number;
   /** Coarse brightness sanity check, not real face detection — see MeanFaceColorPlugin native reference. */
   faceDetected: boolean;
+  /**
+   * 0..1 output of the trained anemia-risk classifier (ml/pallor/train.py), or null when
+   * unavailable (Android has no counterpart plugin yet, or the native call failed). See
+   * PallorClassifierPlugin.swift for the model's data-provenance caveats — a small research
+   * dataset, not a validated diagnostic model.
+   */
+  pallorModelScore: number | null;
 }
 
 /** A user's saved "normal" skin color, captured once in good lighting, that later Pallor Checks compare against. */
@@ -199,6 +219,8 @@ export interface PallorResult {
   rednessDrop: number;
   /** current r / (r+g+b), 0..1 */
   normalizedRedness: number;
+  /** median trained-model score across the burst, or null if unreliable/unavailable */
+  modelConfidence: number | null;
   sampleCount: number;
   reliable: boolean;
   /** true when there was no baseline yet and this capture was saved as the new one instead of being scored */

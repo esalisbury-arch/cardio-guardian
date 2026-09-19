@@ -90,6 +90,11 @@ export function scoreFrame(frame: FaceLandmarkFrame): FrameScore | null {
   return { mouthAsymmetry, eyeAsymmetry };
 }
 
+function modelConfidenceFrom(frames: FaceLandmarkFrame[]): number | null {
+  const scores = frames.map((f) => f.asymmetryModelScore).filter((s): s is number => s !== null && s !== undefined);
+  return scores.length === 0 ? null : median(scores);
+}
+
 /** Aggregates a burst of frames (e.g. ~4s of camera frames) into one result. */
 export function aggregateFaceSymmetry(frames: FaceLandmarkFrame[]): FaceSymmetryResult {
   const scores = frames.map(scoreFrame).filter((s): s is FrameScore => s !== null);
@@ -101,6 +106,7 @@ export function aggregateFaceSymmetry(frames: FaceLandmarkFrame[]): FaceSymmetry
       mouthAsymmetry: 0,
       eyeAsymmetry: 0,
       asymmetryScore: 0,
+      modelConfidence: null,
       sampleCount: scores.length,
       reliable: false,
     };
@@ -109,6 +115,7 @@ export function aggregateFaceSymmetry(frames: FaceLandmarkFrame[]): FaceSymmetry
   // Median, not mean — robust against a handful of noisy/blink frames.
   const mouthAsymmetry = median(scores.map((s) => s.mouthAsymmetry));
   const eyeAsymmetry = median(scores.map((s) => s.eyeAsymmetry));
+  const modelConfidence = modelConfidenceFrom(frames);
 
   const asymmetryScore = Math.max(
     0,
@@ -129,6 +136,7 @@ export function aggregateFaceSymmetry(frames: FaceLandmarkFrame[]): FaceSymmetry
       mouthAsymmetry,
       eyeAsymmetry,
       asymmetryScore,
+      modelConfidence,
       sampleCount: scores.length,
       reliable: true,
     };
@@ -140,6 +148,7 @@ export function aggregateFaceSymmetry(frames: FaceLandmarkFrame[]): FaceSymmetry
     mouthAsymmetry,
     eyeAsymmetry,
     asymmetryScore,
+    modelConfidence,
     sampleCount: scores.length,
     reliable: true,
   };

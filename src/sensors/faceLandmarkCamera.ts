@@ -26,6 +26,9 @@ import { FaceLandmarkFrame, Point } from '../types';
 
 // Registered by the native plugin (see android_native_reference / ios_native_reference).
 const faceLandmarksPlugin = VisionCameraProxy.initFrameProcessorPlugin('detectFaceLandmarks', {});
+// Trained Core ML facial-asymmetry classifier (ios/VeritaHealth/FacialAsymmetryClassifierPlugin.swift,
+// ml/face/train.py) — iOS only for now, no Android counterpart exists yet.
+const facialAsymmetryClassifierPlugin = VisionCameraProxy.initFrameProcessorPlugin('classifyFacialAsymmetry', {});
 
 interface RawFaceLandmarkFrame {
   faceDetected: boolean;
@@ -47,11 +50,16 @@ interface RawFaceLandmarkFrame {
   rightMouthCornerY?: number;
 }
 
+interface RawFacialAsymmetryScore {
+  scoreAvailable: boolean;
+  asymmetryModelScore?: number;
+}
+
 function point(x: number | undefined, y: number | undefined): Point | null {
   return x === undefined || y === undefined ? null : { x, y };
 }
 
-function toFaceLandmarkFrame(raw: RawFaceLandmarkFrame): FaceLandmarkFrame {
+function toFaceLandmarkFrame(raw: RawFaceLandmarkFrame, modelScore: RawFacialAsymmetryScore | null): FaceLandmarkFrame {
   return {
     faceDetected: raw.faceDetected,
     leftEyeCenter: point(raw.leftEyeCenterX, raw.leftEyeCenterY),
@@ -62,6 +70,7 @@ function toFaceLandmarkFrame(raw: RawFaceLandmarkFrame): FaceLandmarkFrame {
     rightEyeBottom: point(raw.rightEyeBottomX, raw.rightEyeBottomY),
     leftMouthCorner: point(raw.leftMouthCornerX, raw.leftMouthCornerY),
     rightMouthCorner: point(raw.rightMouthCornerX, raw.rightMouthCornerY),
+    asymmetryModelScore: modelScore?.scoreAvailable ? modelScore.asymmetryModelScore ?? null : null,
   };
 }
 
@@ -71,6 +80,16 @@ function detectFaceLandmarksRaw(frame: Frame): RawFaceLandmarkFrame {
     throw new Error('detectFaceLandmarks native plugin is not registered — see android_native_reference/ and ios_native_reference/');
   }
   return faceLandmarksPlugin.call(frame) as unknown as RawFaceLandmarkFrame;
+}
+
+function classifyFacialAsymmetryRaw(frame: Frame): RawFacialAsymmetryScore | null {
+  'worklet';
+  // iOS-only plugin (see ios/VeritaHealth/FacialAsymmetryClassifierPlugin.swift) — no
+  // Android counterpart exists yet, so this is allowed to simply be unavailable there.
+  if (!facialAsymmetryClassifierPlugin) {
+    return null;
+  }
+  return facialAsymmetryClassifierPlugin.call(frame) as unknown as RawFacialAsymmetryScore;
 }
 
 export interface FaceLandmarkCameraHandle {
@@ -84,8 +103,8 @@ export function useFaceLandmarkCamera(onFrame: (frame: FaceLandmarkFrame) => voi
   const onFrameRef = useRef(onFrame);
   onFrameRef.current = onFrame;
 
-  const handleFrame = useCallback((raw: RawFaceLandmarkFrame) => {
-    onFrameRef.current(toFaceLandmarkFrame(raw));
+  const handleFrame = useCallback((raw: RawFaceLandmarkFrame, modelScore: RawFacialAsymmetryScore | null) => {
+    onFrameRef.current(toFaceLandmarkFrame(raw, modelScore));
   }, []);
 
   const runOnJSFrame = useMemo(() => Worklets.createRunOnJS(handleFrame), [handleFrame]);
@@ -94,7 +113,8 @@ export function useFaceLandmarkCamera(onFrame: (frame: FaceLandmarkFrame) => voi
     (frame) => {
       'worklet';
       const raw = detectFaceLandmarksRaw(frame);
-      runOnJSFrame(raw);
+      const modelScore = classifyFacialAsymmetryRaw(frame);
+      runOnJSFrame(raw, modelScore);
     },
     [runOnJSFrame]
   );

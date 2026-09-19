@@ -58,6 +58,7 @@ export function FaceCheckScreen({ navigation }: Props) {
           timestamp: Date.now(),
           level: faceResult.level,
           asymmetryScore: faceResult.reliable ? faceResult.asymmetryScore : null,
+          modelConfidence: faceResult.reliable ? faceResult.modelConfidence : null,
           reliable: faceResult.reliable,
         }).catch((err) => console.warn('[history] failed to save Face Check result', err));
       }
@@ -109,6 +110,9 @@ export function FaceCheckScreen({ navigation }: Props) {
             <Text style={styles.detail}>
               {t('faceCheck.detail', { mouth: result.mouthAsymmetry.toFixed(3), eye: result.eyeAsymmetry.toFixed(3) })}
             </Text>
+            {result.modelConfidence !== null ? (
+              <Text style={styles.detail}>{t('faceCheck.modelScore', { score: Math.round(result.modelConfidence * 100) })}</Text>
+            ) : null}
           </>
         )}
         <Text style={styles.disclaimer}>{t('faceCheck.disclaimer')}</Text>

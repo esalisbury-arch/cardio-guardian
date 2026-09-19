@@ -94,7 +94,8 @@
     "noCameraMessage": "This device doesn't have a usable front camera for Pallor Check.",
     "detailLower": "Redness vs. baseline: {{value}} points lower",
     "detailHigher": "Redness vs. baseline: {{value}} points higher",
-    "disclaimer": "Screening estimate only, based on camera color alone — lighting, camera white balance, makeup, and tanning can all shift this as much as real pallor. If this comes with chest pain, shortness of breath, cold sweat, or pain in your arm or jaw, treat it as a possible heart attack and call your local emergency number now.",
+    "modelScore": "Anemia-risk model confidence: {{score}}%",
+    "disclaimer": "Screening estimate only, based on camera color alone plus an experimental anemia-risk model trained on a small research dataset (~215 patients) — not a validated diagnostic model. Lighting, camera white balance, makeup, and tanning can all shift this as much as real pallor. If this comes with chest pain, shortness of breath, cold sweat, or pain in your arm or jaw, treat it as a possible heart attack and call your local emergency number now.",
     "recaptureBaseline": "Recapture baseline",
     "instructionFirstTime": "First time: this capture will be saved as your normal skin color baseline",
     "instructionNormal": "Face the camera directly in even lighting and hold still"
@@ -104,7 +105,8 @@
     "noCameraMessage": "This device doesn't have a usable front camera for Face Check.",
     "instruction": "Face the camera directly and hold still",
     "detail": "Mouth asymmetry {{mouth}} · Eye asymmetry {{eye}}",
-    "disclaimer": "Screening estimate only, based on camera landmarks alone. If this comes with sudden arm weakness or slurred speech, treat it as a possible stroke and call your local emergency number now."
+    "modelScore": "Asymmetry model confidence: {{score}}%",
+    "disclaimer": "Screening estimate only, based on camera landmarks plus an experimental asymmetry model trained on Bell's palsy images — not a stroke-specific model, and Bell's palsy affects the whole side of the face including the forehead, while stroke-related drooping typically spares it. If this comes with sudden arm weakness or slurred speech, treat it as a possible stroke and call your local emergency number now."
   },
   "fingerTap": {
     "intro": {

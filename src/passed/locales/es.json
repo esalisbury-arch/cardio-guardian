@@ -94,7 +94,8 @@
     "noCameraMessage": "Este dispositivo no tiene una cámara frontal utilizable para la Prueba de Palidez.",
     "detailLower": "Enrojecimiento vs. referencia: {{value}} puntos más bajo",
     "detailHigher": "Enrojecimiento vs. referencia: {{value}} puntos más alto",
-    "disclaimer": "Solo una estimación de detección, basada únicamente en el color de la cámara — la iluminación, el balance de blancos de la cámara, el maquillaje y el bronceado pueden alterar esto tanto como la palidez real. Si esto ocurre junto con dolor en el pecho, dificultad para respirar, sudor frío o dolor en el brazo o la mandíbula, trátalo como un posible ataque cardíaco y llama a tu número de emergencias local ahora.",
+    "modelScore": "Confianza del modelo de riesgo de anemia: {{score}}%",
+    "disclaimer": "Solo una estimación de detección, basada en el color de la cámara más un modelo experimental de riesgo de anemia entrenado con un conjunto de datos pequeño (~215 pacientes) — no es un modelo diagnóstico validado. La iluminación, el balance de blancos de la cámara, el maquillaje y el bronceado pueden alterar esto tanto como la palidez real. Si esto ocurre junto con dolor en el pecho, dificultad para respirar, sudor frío o dolor en el brazo o la mandíbula, trátalo como un posible ataque cardíaco y llama a tu número de emergencias local ahora.",
     "recaptureBaseline": "Volver a capturar referencia",
     "instructionFirstTime": "Primera vez: esta captura se guardará como tu color de piel normal de referencia",
     "instructionNormal": "Mira directamente a la cámara con iluminación uniforme y no te muevas"
@@ -104,7 +105,8 @@
     "noCameraMessage": "Este dispositivo no tiene una cámara frontal utilizable para el Chequeo Facial.",
     "instruction": "Mira directamente a la cámara y no te muevas",
     "detail": "Asimetría de boca {{mouth}} · Asimetría de ojos {{eye}}",
-    "disclaimer": "Solo una estimación de detección, basada únicamente en puntos de referencia de la cámara. Si esto ocurre junto con debilidad repentina en el brazo o habla arrastrada, trátalo como un posible accidente cerebrovascular y llama a tu número de emergencias local ahora."
+    "modelScore": "Confianza del modelo de asimetría: {{score}}%",
+    "disclaimer": "Solo una estimación de detección, basada en puntos de referencia de la cámara más un modelo experimental de asimetría entrenado con imágenes de parálisis de Bell — no es un modelo específico para accidentes cerebrovasculares, y la parálisis de Bell afecta todo un lado de la cara, incluida la frente, mientras que la caída facial por accidente cerebrovascular normalmente no afecta la frente. Si esto ocurre junto con debilidad repentina en el brazo o habla arrastrada, trátalo como un posible accidente cerebrovascular y llama a tu número de emergencias local ahora."
   },
   "fingerTap": {
     "intro": {

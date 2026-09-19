@@ -14,6 +14,7 @@ function baseFrame(overrides: Partial<FaceLandmarkFrame> = {}): FaceLandmarkFram
     rightEyeBottom: { x: 0.65, y: 0.42 },
     leftMouthCorner: { x: 0.4, y: 0.65 },
     rightMouthCorner: { x: 0.6, y: 0.65 },
+    asymmetryModelScore: null,
     ...overrides,
   };
 }
